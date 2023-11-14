@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+/* Aquí definimos las Custom properties */
+:root {
+	--blank: #fff;
+	--black: #000;
+
+	/* z-index scale */
+	--zIndex-1: 1;
+	--zIndex-2: 2;
+	--zIndex-3: 3;
+	--zIndex-4: 4;
+	--zIndex-5: 5;
+	--zIndex-6: 6;
+	--zIndex-7: 7;
+	--zIndex-8: 8;
+	--zIndex-9: 9;
+	--zIndex-10: 10;
+}
+
+/* Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--light: #ececec;
+	}
+}
+/* Opcional */
+/* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+/* Opcional */
+/* Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		-webkit-animation: none !important;
+		animation: none !important;
+		-webkit-transition: none !important;
+		transition: none !important;
+	}
+}
+/* Reseteamos los margin y paddings de todas las etiquetas */
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	/* -webkit-box-sizing: border-box;
+	box-sizing: border-box; */
+	vertical-align: baseline;
+}
+
+/* Evitamos problemas con las imagenes */
+img,
+picture,
+video,
+iframe,
+figure {
+	width: 100%;
+	display: block;
+	/* opcional */
+	-o-object-fit: cover;
+	object-fit: cover;
+	/* opcional */
+	-o-object-position: center center;
+	object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+	display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+	list-style-type: none;
+}
+
+/* Configuramos anclas suaves */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+blockquote,
+i,
+b,
+u,
+em {
+	font-size: 1em;
+	font-weight: inherit;
+	font-style: inherit;
+	text-decoration: none;
+	color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+
+/* Configuramos el texto que seleccionamos */
+::-moz-selection {
+	background-color: var(--black);
+	color: var(--blank);
+}
+::selection {
+	background-color: var(--black);
+	color: var(--blank);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form,
+input,
+textarea,
+select,
+button,
+label {
+	font-family: inherit;
+	font-size: inherit;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+	background-color: transparent;
+	color: inherit;
+	display: block;
+	/* opcional */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+/* Reseteamos las tablas */
+table,
+tr,
+td {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+	display: block;
+	fill: currentColor;
+}
+
+:-webkit-any(article, aside, nav, section) h1 {
+	font-size: 1.5em;
+	margin-block-start: 0.83em;
+	margin-block-end: 0.83em;
+}
+
+/* (Probándolo, no usar en producción) En el caso de añadir una  */
+/* p svg{
+  display: inline;
+  width: initial;
+} */
+/* Configuramos la tipografía para toda la web */
+body {
+	margin: 0;
+	max-width: 100vw;
+	min-height: 100vh;
+	font-size: 100%;
+	/* opcional */
+	/* line-height: 1.4em; */
+	/* opcional */
+	/* -webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto; */
+	/* opcional */
+	font-smooth: always;
+	/* opcional */
+	-webkit-font-smoothing: antialiased;
+	/* opcional */
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+	overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+	width: 0.625rem;
+	background: rgb(25, 25, 25);
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #aca7a7;
+	border-radius: 8px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: #7e7e7e;
+	border-radius: 8px;
+}
