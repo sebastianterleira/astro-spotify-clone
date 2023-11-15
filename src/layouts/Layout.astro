@@ -32,7 +32,54 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<main><slot /></main>
+    <main>
+      <aside>
+        Aside
+      </aside>
+      <section>
+        <slot />
+      </section>
+      <footer>
+        Footer
+      </footer>
+    </main>
+    <style>
+      main {
+        height: 100vh;
+        position: relative;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        display: grid;
+        grid-template-areas:
+          "aside main main"
+          "player player player";
+        grid-template-columns: 21.875rem 1fr;
+        grid-template-rows: 1fr auto;
+      }
+
+      aside {
+        grid-area: aside;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        background-color: cadetblue;
+        border-radius: 0.5rem;
+      }
+
+      section {
+        grid-area: main;
+        width: 100%;
+        overflow-y: auto;
+        background-color: bisque;
+        border-radius: 0.5rem;
+      }
+
+      footer {
+        min-height: 5rem;
+        grid-area: player;
+        border-radius: 0.5rem;
+      }
+    </style>
 
 		<style is:global>
       html {
