@@ -1,0 +1,47 @@
+---
+import HomeIcon from "../icons/Home.astro";
+import SearchIcon from "../icons/Search.astro";
+import SideMenuItem from "./supcomponents/SideMenuItem.astro";
+
+---
+
+<nav class="wrapper">
+  <div class="box--1">
+    <ul class="box__content">
+      <SideMenuItem  href="/">
+        <HomeIcon />
+        Home
+      </SideMenuItem>
+      <SideMenuItem  href="#">
+        <SearchIcon />
+        Search
+      </SideMenuItem>
+    </ul>
+  </div>
+  <div></div>
+</nav>
+
+<style>
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%;
+    gap: 2rem;
+  }
+
+  .box--1 {
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    background-color: #121212;
+  }
+
+  .box__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+</style>
