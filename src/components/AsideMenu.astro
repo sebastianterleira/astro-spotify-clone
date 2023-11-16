@@ -7,7 +7,7 @@ import SideMenuItem from "./supcomponents/SideMenuItem.astro";
 ---
 
 <nav class="wrapper">
-  <div class="box--1">
+  <header class="box--1">
     <ul class="box__content">
       <SideMenuItem  href="/">
         <HomeIcon />
@@ -18,17 +18,15 @@ import SideMenuItem from "./supcomponents/SideMenuItem.astro";
         Buscar
       </SideMenuItem>
     </ul>
-  </div>
-  <div>
-    <div class="box--2">
+  </header>
+    <header class="box--2">
       <ul class="box__content">
         <SideMenuItem gapCustom={true}  href="/">
           <LibraryIcon />
           Tu biblioteca
         </SideMenuItem>
       </ul>
-    </div>
-  </div>
+    </header>
 </nav>
 
 <style>
@@ -61,5 +59,6 @@ import SideMenuItem from "./supcomponents/SideMenuItem.astro";
     border-radius: 0.5rem;
     padding: 1.2rem 1.5rem;
     background-color: #121212;
+    flex: 1 1 0%;
   }
 </style>
