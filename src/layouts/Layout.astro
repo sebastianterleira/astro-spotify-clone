@@ -1,5 +1,6 @@
 ---
 import "../styles/GlobalStyles.css";
+import AsideMenu from "../components/AsideMenu.astro"
 
 interface Props {
 	title: string;
@@ -23,7 +24,7 @@ const { title } = Astro.props;
 	<body>
     <main>
       <aside>
-        Aside
+        <AsideMenu />
       </aside>
       <section>
         <slot />
@@ -51,7 +52,6 @@ const { title } = Astro.props;
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        background-color: cadetblue;
         border-radius: 0.5rem;
       }
 
@@ -59,7 +59,6 @@ const { title } = Astro.props;
         grid-area: main;
         width: 100%;
         overflow-y: auto;
-        background-color: bisque;
         border-radius: 0.5rem;
       }
 
@@ -73,7 +72,7 @@ const { title } = Astro.props;
 		<style is:global>
       html {
         font-family: "CircularStd", system-ui, sans-serif;
-        background: #010101;
+        background: #000;
         color: white;
       }
 
