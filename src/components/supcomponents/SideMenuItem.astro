@@ -1,13 +1,14 @@
 ---
 interface Props {
   href?: string;
+  gapCustom?: bool;
 }
 
-const { href } = Astro.props;
+const { href, gapCustom } = Astro.props;
 ---
 
 <li>
-  <a href={href}>
+  <a style={gapCustom ? "gap: .8rem" : ""} href={href}>
     <slot />
   </a>
 </li>
