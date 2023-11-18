@@ -1,6 +1,7 @@
 ---
 import "../styles/GlobalStyles.css";
 import AsideMenu from "../components/AsideMenu.astro"
+import Header from "../components/Header.astro";
 
 interface Props {
 	title: string;
@@ -27,6 +28,7 @@ const { title } = Astro.props;
         <AsideMenu />
       </aside>
       <section>
+        <Header />
         <slot />
       </section>
       <footer>
@@ -60,6 +62,7 @@ const { title } = Astro.props;
         width: 100%;
         overflow-y: auto;
         border-radius: 0.5rem;
+        background-color: #121212;
       }
 
       footer {
