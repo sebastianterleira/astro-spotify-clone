@@ -1,7 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Home from "../components/Home.astro"
+import Home from "../components/Home.astro";
+import Login from "../components/Login";
+import HomeLayout from "../layouts/HomeLayout.astro";
+
+const token = false;
 ---
-<Layout title="Spotify Clone">
-	<Home />
-</Layout>
+
+<Fragment>
+  {
+    token ? (
+      <Layout title="Spotify Clone">
+        <Login />
+      </Layout>
+    ) : (
+      <HomeLayout>
+        <Home />
+      </HomeLayout>
+    )
+  }
+</Fragment>
