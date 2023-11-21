@@ -1,0 +1,55 @@
+---
+import AsideMenu from "../components/AsideMenu.astro";
+import Header from "../components/Header.astro";
+import Layout from "./Layout.astro";
+---
+
+<Layout title="Spotify Clone">
+  <main class="main">
+    <aside class="aside">
+      <AsideMenu />
+    </aside>
+    <section class="section">
+      <Header />
+      <slot />
+    </section>
+    <footer class="footer">Footer</footer>
+  </main>
+</Layout>
+  
+  <style>
+    .main {
+    height: 100vh;
+    position: relative;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-areas:
+      "aside main main"
+      "player player player";
+    grid-template-columns: 26.2rem 1fr;
+    grid-template-rows: 1fr auto;
+  }
+
+  .aside {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+  }
+
+  .section {
+    grid-area: main;
+    width: 100%;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    background-color: #121212;
+  }
+
+  .footer {
+    min-height: 5rem;
+    grid-area: player;
+    border-radius: 0.5rem;
+  }
+</style>
