@@ -52,7 +52,6 @@ picture,
 video,
 iframe,
 figure {
-	width: 100%;
 	display: block;
 	/* opcional */
 	-o-object-fit: cover;
