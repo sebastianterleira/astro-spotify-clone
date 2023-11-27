@@ -4,11 +4,12 @@ import Cookies from "js-cookie";
 
 export default function Login() {
   useEffect(() => {
+    const inOneHour = new Date(new Date().getTime() + 15 * 60 * 4000)
     const tokenHash = window.location.hash;
 
     if (tokenHash !== "") {
-      Cookies.set("token", tokenHash);
-      window.location.reload()
+      Cookies.set("token", tokenHash, {expires: inOneHour});
+      window.location.reload();
     }
   }, []);
 
