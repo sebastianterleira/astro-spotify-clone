@@ -8,8 +8,8 @@ export default function Login() {
     const tokenHash = window.location.hash;
 
     if (tokenHash !== "") {
-      Cookies.set("token", tokenHash, {expires: inOneHour});
       window.location.reload();
+      Cookies.set("token", tokenHash, {expires: inOneHour});
     }
   }, []);
 
