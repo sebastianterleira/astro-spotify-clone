@@ -156,6 +156,7 @@ const { items } = await getPlaylistsData(token);
 
   .bottom-shadow {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
+    z-index: 1;
   }
 
   .playlists::-webkit-scrollbar {
@@ -168,7 +169,7 @@ const { items } = await getPlaylistsData(token);
     justify-content: flex-start;
     width: 100%;
     padding: .5rem;
-    gap: 1rem;
+    gap: .7rem;
     border-radius: 6px;
   }
 
@@ -227,7 +228,7 @@ const { items } = await getPlaylistsData(token);
 
   .owner__subtitle {
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 400;
     word-break: break-all;
     color: #a7a7a7;
   }
