@@ -3,30 +3,70 @@ import HomeIcon from "../icons/Home.astro";
 import SearchIcon from "../icons/Search.astro";
 import LibraryIcon from "../icons/LibraryIcon.astro";
 import SideMenuItem from "./supcomponents/SideMenuItem.astro";
+import { getPlaylistsData } from "../services/service.playlist";
+import CoverPlaylistDefault from "../icons/CoverPlaylistDefault.astro";
 
+const hash = Astro.cookies.get("token");
+const token = hash.value.substring(1).split("&")[0].split("=")[1];
+
+const { items } = await getPlaylistsData(token);
 ---
 
 <nav class="wrapper">
   <header class="box--1">
     <ul class="box__content">
-      <SideMenuItem  href="/">
+      <SideMenuItem href="/">
         <HomeIcon />
         Inicio
       </SideMenuItem>
-      <SideMenuItem  href="#">
+      <SideMenuItem href="#">
         <SearchIcon />
         Buscar
       </SideMenuItem>
     </ul>
   </header>
-    <header class="box--2">
-      <ul class="box__content">
-        <SideMenuItem gapCustom={true}  href="/">
-          <LibraryIcon />
-          Tu biblioteca
-        </SideMenuItem>
-      </ul>
-    </header>
+  <section class="box--2">
+    <ul class="box__content--p" id="Biblioteca">
+      <SideMenuItem gapCustom={true} href="/">
+        <LibraryIcon />
+        Tu biblioteca
+      </SideMenuItem>
+    </ul>
+    <div class="playlists" id="playlistContainer">
+      {
+        items.map((playlist) => (
+          <Fragment>
+            <div class="playlists__item">
+              {playlist.images[0]?.url !== undefined ? (
+                <figure class="item__containerImg">
+                  <img
+                    src={playlist.images[0]?.url}
+                    height="48"
+                    width="48"
+                    class="containerImg__img"
+                  />
+                </figure>
+              ) : (
+                <figure class="item__containerImg--svg">
+                  <CoverPlaylistDefault />
+                </figure>
+              )}
+              <header class="item__wrapper">
+                <h2 class="wrapper__title hiddenText">{playlist.name}</h2>
+                <div class="wrapper__owner">
+                  <p class="owner__subtitle">
+                    {playlist.type === "playlist" ? "Lista" : ""}
+                  </p>
+                  <spam class="owner__subtitle--xs">•</spam>
+                  <p class="owner__subtitle">{playlist.owner.display_name}</p>
+                </div>
+              </header>
+            </div>
+          </Fragment>
+        ))
+      }
+    </div>
+  </section>
 </nav>
 
 <style>
