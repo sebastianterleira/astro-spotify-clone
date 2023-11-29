@@ -90,6 +90,7 @@ const { items } = await getPlaylistsData(token);
     flex-direction: column;
     flex: 1 1 0%;
     gap: 0.5rem;
+    overflow-y: auto;
   }
 
   .box--1 {
@@ -99,6 +100,21 @@ const { items } = await getPlaylistsData(token);
     border-radius: 0.5rem;
     padding: 1.5rem;
     background-color: #121212;
+  }
+
+  .hiddenText {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .box__content--p {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.2rem 1.5rem;
   }
 
   .box__content {
@@ -112,8 +128,109 @@ const { items } = await getPlaylistsData(token);
     display: flex;
     height: 7rem;
     border-radius: 0.5rem;
-    padding: 1.2rem 1.5rem;
     background-color: #121212;
     flex: 1 1 0%;
+    flex-direction: column;
+  }
+
+  .playlists {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem 0 1rem;
+    overflow-y: scroll;
+  }
+
+  .playlists::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, 100%, 0.3);
+  }
+
+  .playlists::-webkit-scrollbar-thumb:hover {
+    background: hsla(0, 0%, 100%, 0.4);
+  }
+
+  .playlists::-webkit-scrollbar-thumb:active {
+    background: hsla(0, 0%, 100%, 0.6);
+  }
+
+  .playlists::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  .bottom-shadow {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
+  }
+
+  .playlists::-webkit-scrollbar {
+    width: 1rem;
+    height: 2rem;
+  }
+
+  .playlists__item {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .item__containerImg {
+    background-color: #282828;
+    border-radius: 5px;
+  }
+
+  .containerImg__img {
+    border-radius: 5px;
+  }
+
+  .item__containerImg--svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    background-color: #282828;
+  }
+
+  .item__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.2rem 0;
+  }
+
+  .wrapper__title {
+    word-break: break-all;
+    outline: none;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    font-size: 1em;
+    font-weight: 400;
+    color: #fff, #000000;
+  }
+
+  .wrapper__owner {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  @supports (overflow-wrap: anywhere) {
+    .owner__subtitle {
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .owner__subtitle {
+    font-size: 0.875rem;
+    font-weight: 500;
+    word-break: break-all;
+    color: #a7a7a7;
+  }
+
+  .owner__subtitle--xs {
+    font-size: 0.5rem;
+    font-weight: 400;
+    color: #a7a7a7;
   }
 </style>
