@@ -1,4 +1,6 @@
-export const getPlaylistsData = async (token) => {
+import { type PlaylistsSpotifyAPIResponse } from "../lib/playlists.type"
+
+export const getPlaylistsData = async (token: string) => {
   const url = "https://api.spotify.com/v1/me/playlists";
   try {
     const response = await fetch(url, {
@@ -12,7 +14,7 @@ export const getPlaylistsData = async (token) => {
       throw new Error("Error al obtener las listas de reproducción");
     }
 
-    const data = await response.json();
+    const data = await response.json() as PlaylistsSpotifyAPIResponse;
     return data;
   } catch (error) {
     console.error("Error:", error.message);
