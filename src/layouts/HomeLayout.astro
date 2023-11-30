@@ -53,4 +53,21 @@ import Layout from "./Layout.astro";
     grid-area: player;
     border-radius: 0.5rem;
   }
+
+  .section::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, 100%, 0.3);
+  }
+
+  .section::-webkit-scrollbar-thumb:hover {
+    background: hsla(0, 0%, 100%, 0.4);
+  }
+
+  .section::-webkit-scrollbar-thumb:active {
+    background: hsla(0, 0%, 100%, 0.6);
+  }
+
+  .section::-webkit-scrollbar {
+    width: 0.8rem;
+    height: 2rem;
+  }
 </style>
