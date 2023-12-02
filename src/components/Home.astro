@@ -1,5 +1,13 @@
 ---
 
+const hash = Astro.cookies.get("token");
+const token = hash.value.substring(1).split("&")[0].split("=")[1];
+
+// Lista de Playlists
+const { items } = await getPlaylistsData(token);
+
+// Lista de Playlists recortada
+const playlistDataRecomendados = items.slice(0, 6);
 ---
 
 <Fragment>
