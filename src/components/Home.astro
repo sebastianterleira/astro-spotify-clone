@@ -1,4 +1,7 @@
 ---
+import { getPlaylistsData } from "../services/service.playlist";
+import CoverPlaylistDefault from "../icons/CoverPlaylistDefault.astro";
+import Play from "../icons/Play.astro";
 
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
