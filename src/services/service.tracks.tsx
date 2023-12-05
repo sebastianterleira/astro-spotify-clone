@@ -1,3 +1,4 @@
+import type { TracksAPIResponse } from "../lib/tracks.type";
 import { getPlaylistsData } from "./service.playlist";
 
 export const getTracks = async (token: string) => {
@@ -16,7 +17,7 @@ export const getTracks = async (token: string) => {
         throw new Error("Error al obtener las listas de canciones");
       }
   
-      const data = await response.json();
+      const data = await response.json() as TracksAPIResponse;
       return data.items
       
     } catch (error) {
