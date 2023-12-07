@@ -4,7 +4,7 @@ import ArrowNext from "../icons/ArrowNext.astro";
 import DownloadIcon from "../icons/DownloadIcon.astro";
 ---
 
-<header class="header">
+<header class="header" id="header">
   <nav class="nav">
     <div class="nav__buttons">
       <button class="buttons__item" aria-label="Volver">
@@ -25,13 +25,17 @@ import DownloadIcon from "../icons/DownloadIcon.astro";
 
 <style>
   .header {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
     display: flex;
-    width: 100%;
+    width: 67.55%;
     height: 4rem;
-    top: 0;
-    position: sticky;
+    top: 8px;
+    position: fixed;
     background-color: transparent;
     z-index: 1;
+    -webkit-transition: background-color .25s,opacity .4s ease-out;
+    transition: background-color .25s,opacity .4s ease-out;
   }
 
   .nav {
