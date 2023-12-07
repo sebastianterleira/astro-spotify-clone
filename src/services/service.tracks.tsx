@@ -1,5 +1,5 @@
 import type { TracksAPIResponse } from "../types/tracks.type";
-import { getPlaylistsData } from "./service.playlist";
+import { getPlaylistsData } from "./service.getAllPlaylists";
 
 export const getTracks = async (token: string) => {
 

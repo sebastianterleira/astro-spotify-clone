@@ -1,5 +1,5 @@
 ---
-import { getPlaylistsData } from "../services/service.playlist";
+import { getPlaylistsData } from "../services/service.getAllPlaylists";
 import CoverPlaylistDefault from "../icons/CoverPlaylistDefault.astro";
 import CoverPlaylistDefaultLarge from "../icons/CoverPlaylistDefaultLarge.astro";
 import Play from "../icons/Play.astro";
@@ -25,7 +25,7 @@ const playlists = items.map((arrTrack, index) => {
   }
 });
 
-console.log(playlists);
+console.log(playlists)
 
 // Obtener la informacion del usuario actual
 const user = await getCurrentUser(token);
