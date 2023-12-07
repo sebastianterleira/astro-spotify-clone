@@ -1,4 +1,4 @@
-import type { TracksAPIResponse } from "../lib/tracks.type";
+import type { TracksAPIResponse } from "../types/tracks.type";
 import { getPlaylistsData } from "./service.playlist";
 
 export const getTracks = async (token: string) => {

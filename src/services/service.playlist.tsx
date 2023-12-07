@@ -1,4 +1,4 @@
-import { type PlaylistsSpotifyAPIResponse } from "../lib/playlists.type"
+import { type PlaylistsSpotifyAPIResponse } from "../types/playlists.type"
 
 export const getPlaylistsData = async (token: string) => {
   const url = "https://api.spotify.com/v1/me/playlists";
