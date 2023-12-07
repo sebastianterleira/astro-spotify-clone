@@ -1,6 +1,6 @@
 import type { ItemPlaylistAPIResponse } from "../types/item-playlist.types";
 
-export const getCurrentUser = async (token: string, playlist_id: string) => {
+export const getPlaylistTracks = async (token: string, playlist_id: string) => {
   const url = `https://api.spotify.com/v1/playlists/${playlist_id}/tracks`;
   try {
     const response = await fetch(url, {
