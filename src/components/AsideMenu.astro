@@ -53,7 +53,7 @@ console.log(token);
       {
         items.map((playlist) => (
           <Fragment>
-            <a href="#">
+            <a href={`/playlist/${playlist.id}`}>
               <div class="playlists__item">
                 {playlist.images[0]?.url !== undefined ? (
                   <figure class="item__containerImg">
