@@ -45,7 +45,7 @@ const playlistDataRecomendados = items.slice(0, 6);
         {
           playlistDataRecomendados.map((playlist) => (
             <Fragment>
-              <a class="card" href={`/playlist/${playlist.id}`}>
+              <a class="card" href={`/playlist/${playlist.id}`} data-astro-prefetch="viewport">
                 <div class="container__img">
                   {playlist.images[0]?.url !== undefined ? (
                     <figure>
@@ -78,7 +78,7 @@ const playlistDataRecomendados = items.slice(0, 6);
         {
           playlists.map((playlist) => (
             <Fragment>
-              <a href={`playlist/${playlist.id}`} class="container__playlist--list">
+              <a href={`playlist/${playlist.id}`} class="container__playlist--list" data-astro-prefetch="viewport">
                 {playlist.images[0]?.url !== undefined ? (
                   <figure class="content__img">
                     <img

@@ -32,11 +32,11 @@ console.log(token);
 <nav class="wrapper">
   <header class="box--1">
     <ul class="box__content">
-      <SideMenuItem href="/">
+      <SideMenuItem href="/" data-astro-prefetch="viewport">
         <HomeIcon />
         Inicio
       </SideMenuItem>
-      <SideMenuItem href="#">
+      <SideMenuItem href="#" data-astro-prefetch="viewport">
         <SearchIcon />
         Buscar
       </SideMenuItem>
@@ -44,7 +44,7 @@ console.log(token);
   </header>
   <section class="box--2">
     <ul class="box__content--p" id="Biblioteca">
-      <SideMenuItem gapCustom={true} href="/">
+      <SideMenuItem gapCustom={true} href="/" data-astro-prefetch="viewport">
         <LibraryIcon />
          Tu biblioteca
       </SideMenuItem>
@@ -53,7 +53,7 @@ console.log(token);
       {
         items.map((playlist) => (
           <Fragment>
-            <a href={`/playlist/${playlist.id}`}>
+            <a href={`/playlist/${playlist.id}`} data-astro-prefetch="viewport">
               <div class="playlists__item">
                 {playlist.images[0]?.url !== undefined ? (
                   <figure class="item__containerImg">
