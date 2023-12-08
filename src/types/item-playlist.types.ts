@@ -1,4 +1,52 @@
 export interface ItemPlaylistAPIResponse {
+  collaborative: boolean;
+  description:   string;
+  external_urls: ExternalUrls;
+  followers:     Followers;
+  href:          string;
+  id:            string;
+  images:        Image[];
+  name:          string;
+  owner:         Owner;
+  primary_color: null;
+  public:        boolean;
+  snapshot_id:   string;
+  tracks:        Tracks;
+  type:          string;
+  uri:           string;
+}
+
+export interface ExternalUrls {
+  spotify: string;
+}
+
+export interface Followers {
+  href:  null;
+  total: number;
+}
+
+export interface Image {
+  height: number;
+  url:    string;
+  width:  number;
+}
+
+export interface Owner {
+  display_name?: string;
+  external_urls: ExternalUrls;
+  href:          string;
+  id:            string;
+  type:          OwnerType;
+  uri:           string;
+  name?:         string;
+}
+
+export enum OwnerType {
+  Artist = "artist",
+  User = "user",
+}
+
+export interface Tracks {
   href:     string;
   items:    Item[];
   limit:    number;
@@ -10,34 +58,16 @@ export interface ItemPlaylistAPIResponse {
 
 export interface Item {
   added_at:        Date;
-  added_by:        AddedBy;
+  added_by:        Owner;
   is_local:        boolean;
   primary_color:   null;
   track:           Track;
   video_thumbnail: VideoThumbnail;
 }
 
-export interface AddedBy {
-  external_urls: ExternalUrls;
-  href:          string;
-  id:            string;
-  type:          AddedByType;
-  uri:           string;
-  name?:         string;
-}
-
-export interface ExternalUrls {
-  spotify: string;
-}
-
-export enum AddedByType {
-  Artist = "artist",
-  User = "user",
-}
-
 export interface Track {
   album:             Album;
-  artists:           AddedBy[];
+  artists:           Owner[];
   available_markets: string[];
   disc_number:       number;
   duration_ms:       number;
@@ -59,7 +89,7 @@ export interface Track {
 
 export interface Album {
   album_type:             AlbumTypeEnum;
-  artists:                AddedBy[];
+  artists:                Owner[];
   available_markets:      string[];
   external_urls:          ExternalUrls;
   href:                   string;
@@ -77,12 +107,6 @@ export enum AlbumTypeEnum {
   Album = "album",
   Compilation = "compilation",
   Single = "single",
-}
-
-export interface Image {
-  height: number;
-  url:    string;
-  width:  number;
 }
 
 export enum ReleaseDatePrecision {
