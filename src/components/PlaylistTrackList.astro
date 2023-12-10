@@ -1,0 +1,202 @@
+---
+import { getCurrentUser } from "../services/service.getCurrentUser";
+import { getPlaylistTracks } from "../services/service.getPlaylist";
+
+interface Props {
+  user_id: string;
+}
+
+const { user_id } = Astro.props;
+
+// Obtener el token del hash
+const hash = Astro.cookies.get("token");
+const token = hash.value.substring(1).split("&")[0].split("=")[1];
+
+// Obtener el Playlist actual
+const playlist = await getPlaylistTracks(token, user_id);
+
+// OBtener datos del usuario
+const user = await getCurrentUser(token);
+
+console.log(playlist);
+---
+
+<Fragment>
+  <div class="wrapper">
+    <div class="mask__bg"></div>
+    <div class="mask__shadow"></div>
+    <figure class="cover__playlist">
+      <img
+        src={playlist.images[0]?.url}
+        width="232"
+        height="232"
+        class="plasylist__img"
+        alt="Imagen de portada del playlist que escogiste"
+      />
+    </figure>
+    <div class="header__playlist">
+      <span class="playlist__type">Lista</span>
+      <header>
+        <h1
+          class={playlist.name.length <= 10
+            ? "playlist__name"
+            : playlist.name.length <= 19
+            ? "playlist__name--xl"
+            : playlist.name.length <= 25
+            ? "playlist__name--lg"
+            : "playlist__name--sm"}
+        >
+          {playlist.name}
+        </h1>
+        <div class="playlist__info">
+          {
+            playlist.owner.display_name === user.display_name && (
+              <figure>
+                <img
+                  src={user.images[0]?.url}
+                  width="24"
+                  height="24"
+                  class="user__avatar"
+                  alt="Avatar del usuario que creo el playlist"
+                />
+              </figure>
+            )
+          }
+          <p class="playlist__display_name">{playlist.owner.display_name}</p>
+          <span class="space__char">•</span>
+          <p class="playlist__count_tracks">
+            {`${playlist.tracks.items.length} canciones`}
+          </p>
+          <p class="playlist__followers">
+            {`, ${playlist.followers.total} me gusta`}
+          </p>
+        </div>
+      </header>
+    </div>
+  </div>
+</Fragment>
+
+<style>
+  :root {
+    --background-noise: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=);
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    padding: 0px 1.5rem 1.4375rem 1.5rem;
+    max-height: 25rem;
+    min-height: 21.25rem;
+    position: relative;
+  }
+
+  .mask__bg {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgb(136, 168, 200);
+  }
+
+  .mask__shadow {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(transparent 0,rgba(0,0,0,.5) 100%),var(--background-noise);
+  }
+
+  .cover__playlist {
+    margin-right: 1.3rem;
+    position: relative;
+  }
+
+  .plasylist__img {
+    box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .header__playlist {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+  }
+
+  .playlist__type {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .playlist__name {
+    font-size: 6rem;
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin: 0.06em 0px 0.15em;
+  }
+
+  .playlist__name--sm {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin: 0.06em 0px 0.12em;
+  }
+
+  .playlist__name--lg {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin: 0.06em 0px 0.12em;
+  }
+
+  .playlist__name--xl {
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin: 0.06em 0px 0.22em;
+  }
+
+  .user__avatar {
+    border-radius: 50%;
+    margin-right: 0.4rem;
+  }
+
+  .playlist__info {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  data: image/svg + xml;
+  base64,
+  PHN2ZyB4bWxucz0iaHR0cDov…sdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=
+    .playlist__display_name {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .space__char {
+    font-weight: 400;
+    font-size: 0.5em;
+    margin: 0 0.4rem;
+  }
+
+  .playlist__count_tracks {
+    font-size: 0.875rem;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .playlist__followers {
+    font-size: 0.875rem;
+    font-weight: 400;
+    white-space: nowrap;
+    color: hsla(0, 0%, 100%, 0.7);
+  }
+</style>
