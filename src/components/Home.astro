@@ -39,6 +39,7 @@ const playlistDataRecomendados = items.slice(0, 6);
 
 <Fragment>
   <div class="wrapper">
+    <div class="mask__bg"></div>
     <article class="home__pov">
       <h1 class="wave">{greeting}</h1>
       <div class="card__container">
@@ -119,11 +120,31 @@ const playlistDataRecomendados = items.slice(0, 6);
 </Fragment>
 
 <style>
+  :root {
+    --background-noise--home: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=);
+    --background-base: #121212;
+  }
+
   .wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 4rem 1.375rem 0.25rem 1.375rem;
+    position: relative;
+  }
+
+  .mask__bg {
+    background-color: rgb(136, 24, 48);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.6)),to(var(--background-base))),var(--background-noise--home);
+    background-image: linear-gradient(rgba(0,0,0,.6) 0,var(--background-base) 100%),var(--background-noise--home);
+    height: 332px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    -webkit-transition: background 1s ease;
+    transition: background 1s ease;
+    width: 100%;
+    z-index: 0;
   }
 
   .container__grid {
@@ -131,6 +152,7 @@ const playlistDataRecomendados = items.slice(0, 6);
     flex-direction: column;
     gap: 1.125rem;
     margin-bottom: 1rem;
+    position: relative;
   }
 
   .container__playlist {
@@ -163,6 +185,7 @@ const playlistDataRecomendados = items.slice(0, 6);
     flex-direction: column;
     gap: 1.125rem;
     margin-bottom: 2.5rem;
+    position: relative;
   }
 
   .card__container {
