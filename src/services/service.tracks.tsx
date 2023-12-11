@@ -18,7 +18,7 @@ export const getTracks = async (token: string) => {
       }
   
       const data = await response.json() as TracksAPIResponse;
-      return data.items
+      return data.items.slice(0, 3)
       
     } catch (error) {
       console.error("Error:", error.message);
