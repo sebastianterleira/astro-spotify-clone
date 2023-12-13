@@ -13,7 +13,7 @@ const { user_id } = Astro.props;
 
 // Obtener el token del hash
 const hash = Astro.cookies.get("token");
-const token = hash.value.substring(1).split("&")[0].split("=")[1];
+const token = hash?.value.substring(1).split("&")[0].split("=")[1];
 
 // Obtener el Playlist actual
 const playlist = await getPlaylistTracks(token, user_id);
@@ -21,7 +21,7 @@ const playlist = await getPlaylistTracks(token, user_id);
 // OBtener datos del usuario
 const user = await getCurrentUser(token);
 
-const trackNum = countTrack(playlist.tracks.total)
+const trackNum = countTrack(playlist.tracks.total);
 
 console.log(playlist);
 ---
@@ -31,22 +31,22 @@ console.log(playlist);
     <div class="mask__bg"></div>
     <div class="mask__shadow"></div>
     {
-      playlist.images[0]?.url !== undefined ? (
+      playlist.images !== null ? (
         <figure class="cover__playlist">
           <img
-            src={playlist.images[0]?.url}
+            src={playlist?.images[0]?.url}
             width="232"
             height="232"
-            class="plasylist__img"
+            class="playlist__img"
             alt="Imagen de portada del playlist que escogiste"
           />
         </figure>
-        ) : (
+      ) : (
         <picture class="cover__playlist">
           <CoverPlaylistDefaultLarge />
         </picture>
-        )
-      }
+      )
+    }
     <div class="header__playlist">
       <span class="playlist__type">Lista</span>
       <header>
@@ -54,10 +54,10 @@ console.log(playlist);
           class={playlist.name.length <= 10
             ? "playlist__name"
             : playlist.name.length <= 19
-            ? "playlist__name--xl"
-            : playlist.name.length <= 25
-            ? "playlist__name--lg"
-            : "playlist__name--sm"}
+              ? "playlist__name--xl"
+              : playlist.name.length <= 25
+                ? "playlist__name--lg"
+                : "playlist__name--sm"}
         >
           {playlist.name}
         </h1>
@@ -101,12 +101,14 @@ console.log(playlist);
       </nav>
     </header>
     <div class="tracks__container">
-      {playlist.tracks.items.map((track, index) => (
-        <div class="card">
+      {
+        playlist.tracks.items.map((track, index) => (
+          <div class="card">
             <p>{trackNum[index]}</p>
-          <p>{track.track.name}</p>
-        </div>
-        ))}
+            <p>{track.track.name}</p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </Fragment>
@@ -174,7 +176,7 @@ console.log(playlist);
     position: relative;
   }
 
-  .plasylist__img {
+  .playlist__img {
     box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
   }
@@ -259,7 +261,7 @@ console.log(playlist);
   }
 
   .tracks__container {
-    position: relative;  
+    position: relative;
     padding: 0 1.5rem 1.5rem 1.5rem;
     width: 100%;
     margin: 0;
@@ -281,7 +283,7 @@ console.log(playlist);
     height: 100%;
     padding: 0 1rem;
     gap: 1rem;
-    border-bottom: 1px solid hsla(0,0%,100%,.1);
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
     color: #a7a7a7;
   }
 
@@ -319,6 +321,6 @@ console.log(playlist);
   }
 
   .card:hover {
-    background-color: hsla(0,0%,100%,.1);
+    background-color: hsla(0, 0%, 100%, 0.1);
   }
 </style>
