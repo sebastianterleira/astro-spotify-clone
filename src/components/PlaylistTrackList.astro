@@ -1,4 +1,7 @@
 ---
+import CoverPlaylistDefaultLarge from "../icons/CoverPlaylistDefaultLarge.astro";
+import TimeIcon from "../icons/TimeIcon.astro";
+import { countTrack } from "../lib/countTracks";
 import { getCurrentUser } from "../services/service.getCurrentUser";
 import { getPlaylistTracks } from "../services/service.getPlaylist";
 
@@ -18,6 +21,8 @@ const playlist = await getPlaylistTracks(token, user_id);
 // OBtener datos del usuario
 const user = await getCurrentUser(token);
 
+const trackNum = countTrack(playlist.tracks.total)
+
 console.log(playlist);
 ---
 
@@ -25,15 +30,23 @@ console.log(playlist);
   <div class="wrapper">
     <div class="mask__bg"></div>
     <div class="mask__shadow"></div>
-    <figure class="cover__playlist">
-      <img
-        src={playlist.images[0]?.url}
-        width="232"
-        height="232"
-        class="plasylist__img"
-        alt="Imagen de portada del playlist que escogiste"
-      />
-    </figure>
+    {
+      playlist.images[0]?.url !== undefined ? (
+        <figure class="cover__playlist">
+          <img
+            src={playlist.images[0]?.url}
+            width="232"
+            height="232"
+            class="plasylist__img"
+            alt="Imagen de portada del playlist que escogiste"
+          />
+        </figure>
+        ) : (
+        <picture class="cover__playlist">
+          <CoverPlaylistDefaultLarge />
+        </picture>
+        )
+      }
     <div class="header__playlist">
       <span class="playlist__type">Lista</span>
       <header>
@@ -51,7 +64,7 @@ console.log(playlist);
         <div class="playlist__info">
           {
             playlist.owner.display_name === user.display_name && (
-              <figure>
+              <picture>
                 <img
                   src={user.images[0]?.url}
                   width="24"
@@ -59,7 +72,7 @@ console.log(playlist);
                   class="user__avatar"
                   alt="Avatar del usuario que creo el playlist"
                 />
-              </figure>
+              </picture>
             )
           }
           <p class="playlist__display_name">{playlist.owner.display_name}</p>
@@ -74,10 +87,33 @@ console.log(playlist);
       </header>
     </div>
   </div>
+  <div class="list__tracks">
+    <div class="mask__bg--2"></div>
+    <header class="table__header">
+      <nav class="header__container">
+        <p class="header__column--number">#</p>
+        <p class="header__column" style="margin-right: 16rem;">Titulo</p>
+        <p class="header__column" style="margin-right: 9rem;">Álbum</p>
+        <div style="max-width: 10rem; margin-right: 5rem;">
+          <p class="header__column">Fecha en la que se añadio</p>
+        </div>
+        <TimeIcon />
+      </nav>
+    </header>
+    <div class="tracks__container">
+      {playlist.tracks.items.map((track, index) => (
+        <div class="card">
+            <p>{trackNum[index]}</p>
+          <p>{track.track.name}</p>
+        </div>
+        ))}
+    </div>
+  </div>
 </Fragment>
 
 <style>
   :root {
+    --background-base: #121212;
     --background-noise: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=);
   }
 
@@ -101,6 +137,27 @@ console.log(playlist);
     background-color: rgb(136, 168, 200);
   }
 
+  .mask__bg--2 {
+    background-color: rgb(136, 168, 200);
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(rgba(0, 0, 0, 0.6)),
+        to(var(--background-base))
+      ),
+      var(--background-noise);
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.6) 0,
+        var(--background-base) 100%
+      ),
+      var(--background-noise);
+    height: 232px;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+  }
+
   .mask__shadow {
     display: block;
     height: 100%;
@@ -108,7 +165,8 @@ console.log(playlist);
     position: absolute;
     top: 0;
     width: 100%;
-    background: linear-gradient(transparent 0,rgba(0,0,0,.5) 100%),var(--background-noise);
+    background: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%),
+      var(--background-noise);
   }
 
   .cover__playlist {
@@ -172,11 +230,7 @@ console.log(playlist);
     align-items: center;
     margin-top: 8px;
   }
-
-  data: image/svg + xml;
-  base64,
-  PHN2ZyB4bWxucz0iaHR0cDov…sdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=
-    .playlist__display_name {
+  .playlist__display_name {
     font-size: 0.875rem;
     font-weight: 700;
   }
@@ -198,5 +252,73 @@ console.log(playlist);
     font-weight: 400;
     white-space: nowrap;
     color: hsla(0, 0%, 100%, 0.7);
+  }
+
+  .list__tracks {
+    position: relative;
+  }
+
+  .tracks__container {
+    position: relative;  
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    width: 100%;
+    margin: 0;
+  }
+
+  .table__header {
+    border-bottom: 1px solid transparent;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 2.25rem;
+    position: relative;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .header__container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+    gap: 1rem;
+    border-bottom: 1px solid hsla(0,0%,100%,.1);
+    color: #a7a7a7;
+  }
+
+  .header__column {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: inherit;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    white-space: unset;
+    word-break: break-all;
+    overflow: hidden;
+  }
+
+  .header__column--number {
+    font-size: 1rem;
+    font-weight: 400;
+    color: inherit;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    white-space: unset;
+    word-break: break-all;
+  }
+
+  .card {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 1rem;
+    gap: 0.7rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+  }
+
+  .card:hover {
+    background-color: hsla(0,0%,100%,.1);
   }
 </style>
