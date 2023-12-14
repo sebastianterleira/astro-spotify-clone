@@ -1,9 +1,13 @@
 ---
+import { Image } from "astro:assets";
 import CoverPlaylistDefaultLarge from "../icons/CoverPlaylistDefaultLarge.astro";
 import TimeIcon from "../icons/TimeIcon.astro";
 import { countTrack } from "../lib/countTracks";
 import { getCurrentUser } from "../services/service.getCurrentUser";
 import { getPlaylistTracks } from "../services/service.getPlaylist";
+import { convertDate } from "../lib/convertDate";
+import { msToMin } from "../lib/msToMin";
+import PlayXSIcon from "../icons/PlayXSIcon.astro";
 
 interface Props {
   user_id: string;
@@ -32,15 +36,15 @@ console.log(playlist);
     <div class="mask__shadow"></div>
     {
       playlist.images !== null ? (
-        <figure class="cover__playlist">
-          <img
+        <picture class="cover__playlist">
+          <Image
             src={playlist?.images[0]?.url}
             width="232"
             height="232"
             class="playlist__img"
             alt="Imagen de portada del playlist que escogiste"
           />
-        </figure>
+        </picture>
       ) : (
         <picture class="cover__playlist">
           <CoverPlaylistDefaultLarge />
@@ -65,7 +69,7 @@ console.log(playlist);
           {
             playlist.owner.display_name === user.display_name && (
               <picture>
-                <img
+                <Image
                   src={user.images[0]?.url}
                   width="24"
                   height="24"
@@ -93,7 +97,7 @@ console.log(playlist);
       <nav class="header__container">
         <p class="header__column--number">#</p>
         <p class="header__column" style="margin-right: 16rem;">Titulo</p>
-        <p class="header__column" style="margin-right: 9rem;">Álbum</p>
+        <p class="header__column" style="margin-right: 9.3rem;">Álbum</p>
         <div style="max-width: 10rem; margin-right: 5rem;">
           <p class="header__column">Fecha en la que se añadio</p>
         </div>
@@ -103,10 +107,55 @@ console.log(playlist);
     <div class="tracks__container">
       {
         playlist.tracks.items.map((track, index) => (
-          <div class="card">
-            <p>{trackNum[index]}</p>
-            <p>{track.track.name}</p>
-          </div>
+          <a href="/track/sdasdase123e12323" class="card">
+            <div style="position: relative; width: 1rem;">
+              <p class="card__numberTrack position__trackNum">
+                {trackNum[index]}
+              </p>
+              <div class="icon__play">
+                <PlayXSIcon />
+              </div>
+            </div>
+            <div class="card__columnTitle">
+              <picture class="content__imgTrack">
+                <Image
+                  src={track.track.album.images[2].url}
+                  height="40"
+                  width="40"
+                  class="img__track"
+                  alt={`Cover del album de la cancion ${track.track.name}`}
+                />
+              </picture>
+              <div class="content__titles">
+                <p class="track__tile hiden__text">{track.track.name}</p>
+                <p class="track__artist hiden__text">
+                  {track.track.artists[0].name +
+                    `${
+                      track.track?.artists[1]?.name === undefined
+                        ? ""
+                        : ", " + track.track?.artists[1]?.name
+                    } `}
+                </p>
+              </div>
+            </div>
+            <div class="card__columnAlbum">
+              <div class="content__album">
+                <p class="album__name hiden__text">{track.track.album.name}</p>
+              </div>
+            </div>
+            <div class="card__columnAdded">
+              <div class="content__added">
+                <p class="album__name hiden__text">
+                  {convertDate(track.added_at)}
+                </p>
+              </div>
+            </div>
+            <div style="position: relative; margin-left: 2rem;">
+              <p class="album__name position_trackDuration hiden__text">
+                {msToMin(track.track.duration_ms)}
+              </p>
+            </div>
+          </a>
         ))
       }
     </div>
@@ -313,8 +362,9 @@ console.log(playlist);
   .card {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     width: 100%;
-    padding: 1rem;
+    padding: 0.3rem 1rem;
     gap: 0.7rem;
     border-radius: 4px;
     border: 1px solid transparent;
@@ -322,5 +372,116 @@ console.log(playlist);
 
   .card:hover {
     background-color: hsla(0, 0%, 100%, 0.1);
+    .icon__play {
+      opacity: 1;
+    }
+
+    .card__numberTrack {
+      opacity: 0;
+    }
+  }
+
+  .card__numberTrack {
+    font-size: 1em;
+    font-weight: 400;
+    font-variant: tabular-nums;
+    color: #a7a7a7;
+    margin-right: 0.6rem;
+  }
+
+  .card__columnTitle {
+    display: flex;
+    align-items: center;
+  }
+
+  .content__imgTrack {
+    margin-right: 0.75rem;
+  }
+
+  .img__track {
+    border-radius: 4px;
+  }
+
+  .content__titles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.2rem 0;
+    width: 14.6rem;
+  }
+
+  .track__tile {
+    font-size: 1em;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .track__artist {
+    font-size: 0.875rem;
+    font-weight: 400;
+    word-break: break-all;
+    color: #a7a7a7;
+  }
+
+  .hiden__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .position__trackNum {
+    font-variant: tabular-nums;
+    pointer-events: none;
+    position: absolute;
+    right: -0.2em;
+    top: -8px;
+  }
+
+  .card__columnAlbum {
+    display: flex;
+    align-items: center;
+  }
+
+  .content__album {
+    width: 12.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .album__name {
+    font-size: 0.875rem;
+    font-weight: 400;
+    word-break: break-all;
+    color: #a7a7a7;
+  }
+
+  .card__columnAdded {
+    display: flex;
+    align-items: center;
+  }
+
+  .content__added {
+    width: 12.5rem;
+  }
+
+  .card__columnTimeTrack {
+    display: flex;
+    align-items: center;
+  }
+
+  .position_trackDuration {
+    pointer-events: none;
+    position: absolute;
+    right: -2.4em;
+    top: -8px;
+  }
+
+  .icon__play {
+    pointer-events: none;
+    position: absolute;
+    right: -0.2em;
+    top: -9px;
+    opacity: 0;
+    cursor: pointer;
   }
 </style>
