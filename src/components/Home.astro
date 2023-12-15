@@ -7,6 +7,7 @@ import { getTracks } from "../services/service.tracks";
 import PlayLarge from "../icons/PlayLargeIcon.astro";
 import { getGreeting } from "../lib/getGreeting";
 import { getCurrentUser } from "../services/service.getCurrentUser";
+import { Image } from "astro:assets";
 
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
@@ -49,18 +50,19 @@ const playlistDataRecomendados = items.slice(0, 6);
               <a class="card" href={`/playlist/${playlist.id}`} data-astro-prefetch="viewport">
                 <div class="container__img">
                   {playlist.images[0]?.url !== undefined ? (
-                    <figure>
-                      <img
+                    <picture>
+                      <Image
                         src={playlist.images[0]?.url}
                         height="48"
                         width="48"
                         class="playlist__cover"
+                        alt={`Cover de portada del playlist ${playlist.name}`}
                       />
-                    </figure>
+                    </picture>
                   ) : (
-                    <figure class="container__svg">
+                    <picture class="container__svg">
                       <CoverPlaylistDefault />
-                    </figure>
+                    </picture>
                   )}
                   <p class="playlist__name hiden__text">{playlist.name}</p>
                 </div>
@@ -81,24 +83,25 @@ const playlistDataRecomendados = items.slice(0, 6);
             <Fragment>
               <a href={`playlist/${playlist.id}`} class="container__playlist--list" data-astro-prefetch="viewport">
                 {playlist.images[0]?.url !== undefined ? (
-                  <figure class="content__img">
-                    <img
+                  <picture class="content__img">
+                    <Image
                       src={playlist.images[0]?.url}
                       height="169"
                       width="169"
                       class="img__playlist"
+                      alt={`Cover de portada del playlist ${playlist.name}`}
                     />
                     <div class="button__play--list">
                       <PlayLarge />
                     </div>
-                  </figure>
+                  </picture>
                 ) : (
-                  <figure class="content__svg">
+                  <picture class="content__svg">
                     <CoverPlaylistDefaultLarge />
                     <div class="button__play--list pos__bottonplay">
                       <PlayLarge />
                     </div>
-                  </figure>
+                  </picture>
                 )}
                 <div class="container__info">
                   <h3 class="playlist__name--recomend parraf__hidden">

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import ArrowBack from "../icons/ArrowBack.astro";
 import ArrowNext from "../icons/ArrowNext.astro";
 import DownloadIcon from "../icons/DownloadIcon.astro";
@@ -7,8 +8,8 @@ import { getCurrentUser } from "../services/service.getCurrentUser";
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
 
-const user = await getCurrentUser(token)
-console.log(user)
+const user = await getCurrentUser(token);
+console.log(user);
 ---
 
 <header class="header" id="header">
@@ -22,116 +23,128 @@ console.log(user)
       </button>
     </div>
     <div class="nav__links">
-      <a href="#" class="link__item--premium" aria-label="Sube a Premium">Descubrir Premium</a>
+      <a href="#" class="link__item--premium" aria-label="Sube a Premium"
+        >Descubrir Premium</a
+      >
       <a href="https://open.spotify.com/download" class="link__item--download"
         ><DownloadIcon /><spam>Instalar app</spam></a
       >
-      <div class="content__user">
-        <img src={user.images[0]?.url} height="24" width="24" class="user__img">
-      </div>
+      <picture class="content__user">
+        <Image
+          src={user.images[0]?.url}
+          height="24"
+          width="24"
+          class="user__img"
+          alt={`Avatar del usuario ${user.display_name}`}
+        />
+      </picture>
     </div>
   </nav>
+
+  <style>
+    .header {
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      display: flex;
+      width: 67.55%;
+      height: 4rem;
+      top: 8px;
+      position: fixed;
+      background-color: transparent;
+      z-index: 1;
+      -webkit-transition:
+        background-color 0.25s,
+        opacity 0.4s ease-out;
+      transition:
+        background-color 0.25s,
+        opacity 0.4s ease-out;
+    }
+
+    .nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5625rem;
+    }
+
+    .nav__buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .buttons__item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .link__item--premium {
+      background-color: #f6f6f6;
+      color: #000;
+      display: flex;
+      border-radius: 9999px;
+      min-block-size: 2rem;
+      align-items: center;
+      justify-content: center;
+      padding-block-start: var(--encore-spacing-tighter-4, 4px);
+      padding-block-end: var(--encore-spacing-tighter-4, 4px);
+      padding-inline-start: var(--encore-spacing-base, 16px);
+      padding-inline-end: var(--encore-spacing-base, 16px);
+      font-size: 0.875em;
+      font-weight: 700;
+    }
+
+    .link__item--download {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 700;
+      font-size: 0.875em;
+      background-color: rgba(0, 0, 0, 0.54);
+      color: #fff;
+      border-radius: 9999px;
+      min-block-size: var(--encore-control-size-smaller, 32px);
+      padding-block-start: var(--encore-spacing-tighter-4, 4px);
+      padding-block-end: var(--encore-spacing-tighter-4, 4px);
+      padding-inline-start: 13px;
+      padding-inline-end: var(--encore-spacing-base, 16px);
+    }
+
+    .link__item--premium:hover {
+      transform: scale(1.04);
+    }
+
+    .link__item--download:hover {
+      transform: scale(1.04);
+    }
+
+    .user__img {
+      border-radius: 50%;
+    }
+
+    .content__user {
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 </header>
-
-<style>
-  .header {
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    display: flex;
-    width: 67.55%;
-    height: 4rem;
-    top: 8px;
-    position: fixed;
-    background-color: transparent;
-    z-index: 1;
-    -webkit-transition: background-color .25s,opacity .4s ease-out;
-    transition: background-color .25s,opacity .4s ease-out;
-  }
-
-  .nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5625rem;
-  }
-
-  .nav__buttons {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .buttons__item {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  .nav__links {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-  }
-
-  .link__item--premium {
-    background-color: #f6f6f6;
-    color: #000;
-    display: flex;
-    border-radius: 9999px;
-    min-block-size: 2rem;
-    align-items: center;
-    justify-content: center;
-    padding-block-start: var(--encore-spacing-tighter-4,4px);
-    padding-block-end: var(--encore-spacing-tighter-4,4px);
-    padding-inline-start: var(--encore-spacing-base,16px);
-    padding-inline-end: var(--encore-spacing-base,16px);
-    font-size: 0.875em;
-    font-weight: 700;
-  }
-
-  .link__item--download {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-weight: 700;
-    font-size: 0.875em;
-    background-color: rgba(0,0,0,0.54);
-    color: #fff;
-    border-radius: 9999px;
-    min-block-size: var(--encore-control-size-smaller,32px);
-    padding-block-start: var(--encore-spacing-tighter-4,4px);
-    padding-block-end: var(--encore-spacing-tighter-4,4px);
-    padding-inline-start: 13px;
-    padding-inline-end: var(--encore-spacing-base,16px);
-  }
-
-  .link__item--premium:hover {
-    transform: scale(1.04);
-  }
-
-  .link__item--download:hover {
-    transform: scale(1.04);
-  }
-
-  .user__img {
-    border-radius: 50%;
-  }
-
-  .content__user {
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-    background-color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-</style>
