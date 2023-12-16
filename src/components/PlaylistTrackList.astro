@@ -8,6 +8,7 @@ import { msToMin } from "../lib/msToMin";
 import TimeIcon from "@icons/TimeIcon.astro";
 import CoverPlaylistDefaultLarge from "@icons/CoverPlaylistDefaultLarge.astro";
 import PlayXSIcon from "@icons/PlayXSIcon.astro";
+import Header from "@components/Header";
 
 interface Props {
   user_id: string;
@@ -31,6 +32,7 @@ console.log(playlist);
 ---
 
 <Fragment>
+  <Header user={user} bg={"bg__header--itemPlaylist"} client:load/>
   <div class="wrapper">
     <div class="mask__bg"></div>
     <div class="mask__shadow"></div>
