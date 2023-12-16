@@ -3,9 +3,9 @@ import { Image } from "astro:assets";
 import { getPlaylistsData } from "@services/service.getAllPlaylists";
 import HomeIcon from "@icons/HomeIcon.astro";
 import SearchIcon from "@icons/SearchIcon.astro";
-import LibraryIcon from "@icons/LibraryIcon.astro";
 import SideMenuItem from "@components/supcomponents/SideMenuItem.astro";
 import CoverPlaylistDefault from "@icons/CoverPlaylistDefault.astro";
+import PlaylistAsideMenu from "@components/supcomponents/InteractiveItemSideMenu"
 
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
@@ -14,21 +14,6 @@ const { items } = await getPlaylistsData(token);
 console.log(items);
 console.log(token);
 ---
-
-<script>
-  const playlistsDiv = document.getElementById("playlistContainer");
-  const bibliotecaSection = document.getElementById("Biblioteca");
-  function handleScroll() {
-    if (playlistsDiv.scrollTop >= 1) {
-      bibliotecaSection.classList.add("bottom-shadow");
-    } else {
-      bibliotecaSection.classList.remove("bottom-shadow");
-    }
-  }
-
-  // Agregar el eventListener al evento de desplazamiento
-  playlistsDiv.addEventListener("scroll", handleScroll);
-</script>
 
 <nav class="wrapper">
   <header class="box--1">
@@ -44,12 +29,7 @@ console.log(token);
     </ul>
   </header>
   <section class="box--2">
-    <ul class="box__content--p" id="Biblioteca">
-      <SideMenuItem gapCustom={true} href="/" data-astro-prefetch="viewport">
-        <LibraryIcon />
-        Tu biblioteca
-      </SideMenuItem>
-    </ul>
+  <PlaylistAsideMenu client:load/>
     <div class="playlists" id="playlistContainer">
       {
         items.map((playlist) => (
