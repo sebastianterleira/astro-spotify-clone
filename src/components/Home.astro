@@ -8,6 +8,7 @@ import CoverPlaylistDefault from "@icons/CoverPlaylistDefault.astro";
 import CoverPlaylistDefaultLarge from "@icons/CoverPlaylistDefaultLarge.astro";
 import Play from "@icons/PlaySmallIcon.astro";
 import PlayLarge from "@icons/PlayLargeIcon.astro";
+import HeaderReact from "@components/HeaderReact";
 
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
@@ -39,6 +40,7 @@ const playlistDataRecomendados = items.slice(0, 6);
 ---
 
 <Fragment>
+  <HeaderReact user={user} client:load/>
   <div class="wrapper">
     <div class="mask__bg"></div>
     <article class="home__pov">
