@@ -8,7 +8,8 @@ export default function HeaderReact({ user, bg }) {
     const bibliotecaSection = document.getElementById("header");
     function handleScroll() {
       if (playlistsDiv.scrollTop >= 240) {
-        bibliotecaSection.classList.add("bg__header--home");
+        console.log(playlistsDiv.scrollTop)
+        bibliotecaSection.classList.add(bg);
       } else {
         bibliotecaSection.classList.remove(bg);
       }
@@ -17,10 +18,10 @@ export default function HeaderReact({ user, bg }) {
   }, []);
 
   return (
-    <header class={styles.header} id="header">
-      <nav class={styles.nav}>
-        <div class={styles.nav__buttons}>
-          <button class={styles.buttons__item} aria-label="Volver">
+    <header className={styles.header} id="header">
+      <nav className={styles.nav}>
+        <div className={styles.nav__buttons}>
+          <button className={styles.buttons__item} aria-label="Volver">
             <svg
               role="img"
               height="16"
@@ -32,7 +33,7 @@ export default function HeaderReact({ user, bg }) {
               <path d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"></path>
             </svg>
           </button>
-          <button class={styles.buttons__item} aria-label="Avanzar">
+          <button className={styles.buttons__item} aria-label="Avanzar">
             <svg
               height="16"
               width="16"
@@ -45,17 +46,17 @@ export default function HeaderReact({ user, bg }) {
             </svg>
           </button>
         </div>
-        <div class={styles.nav__links}>
+        <div className={styles.nav__links}>
           <a
             href="#"
-            class={styles["link__item--premium"]}
+            className={styles["link__item--premium"]}
             aria-label="Sube a Premium"
           >
             Descubrir Premium
           </a>
           <a
             href="https://open.spotify.com/download"
-            class={styles["link__item--download"]}
+            className={styles["link__item--download"]}
           >
             <svg
               height="16"
@@ -71,12 +72,12 @@ export default function HeaderReact({ user, bg }) {
 
             <spam>Instalar app</spam>
           </a>
-          <picture class={styles.content__user}>
+          <picture className={styles.content__user}>
             <img
               src={user.images[0]?.url}
               height="24"
               width="24"
-              class={styles.user__img}
+              className={styles.user__img}
               alt={`Avatar del usuario ${user.display_name}`}
             />
           </picture>
