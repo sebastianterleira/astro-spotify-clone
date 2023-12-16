@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import ArrowBack from "../icons/ArrowBack.astro";
-import ArrowNext from "../icons/ArrowNext.astro";
-import DownloadIcon from "../icons/DownloadIcon.astro";
-import { getCurrentUser } from "../services/service.getCurrentUser";
+import { getCurrentUser } from "@services/service.getCurrentUser";
+import ArrowBack from "@icons/ArrowBack.astro";
+import ArrowNext from "@icons/ArrowNext.astro";
+import DownloadIcon from "@icons/DownloadIcon.astro";
 
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
@@ -40,6 +40,7 @@ console.log(user);
       </picture>
     </div>
   </nav>
+</header>
 
   <style>
     .header {
@@ -147,4 +148,3 @@ console.log(user);
       justify-content: center;
     }
   </style>
-</header>

@@ -1,13 +1,13 @@
 ---
-import { getPlaylistsData } from "../services/service.getAllPlaylists";
-import CoverPlaylistDefault from "../icons/CoverPlaylistDefault.astro";
-import CoverPlaylistDefaultLarge from "../icons/CoverPlaylistDefaultLarge.astro";
-import Play from "../icons/PlaySmallIcon.astro";
-import { getTracks } from "../services/service.tracks";
-import PlayLarge from "../icons/PlayLargeIcon.astro";
-import { getGreeting } from "../lib/getGreeting";
-import { getCurrentUser } from "../services/service.getCurrentUser";
 import { Image } from "astro:assets";
+import { getPlaylistsData } from "@services/service.getAllPlaylists";
+import { getTracks } from "@services/service.tracks";
+import { getGreeting } from "../lib/getGreeting";
+import { getCurrentUser } from "@services/service.getCurrentUser";
+import CoverPlaylistDefault from "@icons/CoverPlaylistDefault.astro";
+import CoverPlaylistDefaultLarge from "@icons/CoverPlaylistDefaultLarge.astro";
+import Play from "@icons/PlaySmallIcon.astro";
+import PlayLarge from "@icons/PlayLargeIcon.astro";
 
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];

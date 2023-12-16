@@ -1,13 +1,13 @@
 ---
 import { Image } from "astro:assets";
-import CoverPlaylistDefaultLarge from "../icons/CoverPlaylistDefaultLarge.astro";
-import TimeIcon from "../icons/TimeIcon.astro";
 import { countTrack } from "../lib/countTracks";
-import { getCurrentUser } from "../services/service.getCurrentUser";
-import { getPlaylistTracks } from "../services/service.getPlaylist";
+import { getCurrentUser } from "@services/service.getCurrentUser";
+import { getPlaylistTracks } from "@services/service.getPlaylist";
 import { convertDate } from "../lib/convertDate";
 import { msToMin } from "../lib/msToMin";
-import PlayXSIcon from "../icons/PlayXSIcon.astro";
+import TimeIcon from "@icons/TimeIcon.astro";
+import CoverPlaylistDefaultLarge from "@icons/CoverPlaylistDefaultLarge.astro";
+import PlayXSIcon from "@icons/PlayXSIcon.astro";
 
 interface Props {
   user_id: string;

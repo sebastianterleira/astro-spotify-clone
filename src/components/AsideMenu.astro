@@ -1,11 +1,11 @@
 ---
-import HomeIcon from "../icons/HomeIcon.astro";
-import SearchIcon from "../icons/SearchIcon.astro";
-import LibraryIcon from "../icons/LibraryIcon.astro";
-import SideMenuItem from "./supcomponents/SideMenuItem.astro";
-import { getPlaylistsData } from "../services/service.getAllPlaylists";
-import CoverPlaylistDefault from "../icons/CoverPlaylistDefault.astro";
 import { Image } from "astro:assets";
+import { getPlaylistsData } from "@services/service.getAllPlaylists";
+import HomeIcon from "@icons/HomeIcon.astro";
+import SearchIcon from "@icons/SearchIcon.astro";
+import LibraryIcon from "@icons/LibraryIcon.astro";
+import SideMenuItem from "@components/supcomponents/SideMenuItem.astro";
+import CoverPlaylistDefault from "@icons/CoverPlaylistDefault.astro";
 
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
