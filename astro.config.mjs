@@ -10,5 +10,9 @@ export default defineConfig({
   adapter: vercel(),
   prefetch: {
     prefetchAll: false
+  },
+  image: {
+    domains: ["mosaic.scdn.co"],
+    remotePatterns: [{ protocol: "https" }]
   }
 });
