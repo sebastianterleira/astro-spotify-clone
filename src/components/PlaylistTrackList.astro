@@ -48,7 +48,7 @@ console.log(playlist);
           />
         </picture>
       ) : (
-        <picture class="cover__playlist">
+        <picture class="cover__playlist default__coverPlaylist">
           <CoverPlaylistDefaultLarge />
         </picture>
       )
@@ -225,6 +225,15 @@ console.log(playlist);
   .cover__playlist {
     margin-right: 1.3rem;
     position: relative;
+  }
+
+  .default__coverPlaylist {
+    height: 232px;
+    width: 325px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: cadetblue;
   }
 
   .playlist__img {
