@@ -15,23 +15,6 @@ import Layout from "./Layout.astro";
   </main>
 </Layout>
 
-<script>
-  const playlistsDiv = document.getElementById("home");
-  const bibliotecaSection = document.getElementById("header");
-  function handleScroll() {
-    if (playlistsDiv.scrollTop >= 240) {
-      bibliotecaSection.classList.add("bg__header--home");
-      console.log(playlistsDiv.scrollTop);
-    } else {
-      bibliotecaSection.classList.remove("bg__header--home");
-    }
-  }
-
-
-  // Agregar el eventListener al evento de desplazamiento
-  playlistsDiv.addEventListener("scroll", handleScroll);
-</script>
-
 <style is:global>
   .bg__header--home {
     background: rgb(54, 9, 17) !important;

@@ -1,9 +1,21 @@
-import ArrowBack from "@icons/ArrowBack.astro";
-import ArrowNext from "@icons/ArrowNext.astro";
-import DownloadIcon from "@icons/DownloadIcon.astro";
 import styles from "../styles/Header.module.css";
+import { useEffect } from "react";
 
-export default function HeaderReact({ user }) {
+export default function HeaderReact({ user, bg }) {
+  
+  useEffect(() => {
+    const playlistsDiv = document.getElementById("home");
+    const bibliotecaSection = document.getElementById("header");
+    function handleScroll() {
+      if (playlistsDiv.scrollTop >= 240) {
+        bibliotecaSection.classList.add("bg__header--home");
+      } else {
+        bibliotecaSection.classList.remove(bg);
+      }
+    }
+    playlistsDiv.addEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <header class={styles.header} id="header">
       <nav class={styles.nav}>
