@@ -95,19 +95,24 @@ console.log(playlist);
   </div>
   <div class="list__tracks">
     <div class="mask__bg--2"></div>
-    <header class="table__header">
-      <nav class="header__container">
-        <p class="header__column--number">#</p>
-        <p class="header__column" style="margin-right: 16rem;">Titulo</p>
-        <p class="header__column" style="margin-right: 9.3rem;">Álbum</p>
-        <div style="max-width: 10rem; margin-right: 5rem;">
-          <p class="header__column">Fecha en la que se añadio</p>
-        </div>
-        <TimeIcon />
-      </nav>
-    </header>
+    {
+        playlist.tracks.items.length !== 0 && (
+          <header class="table__header">
+            <nav class="header__container">
+              <p class="header__column--number">#</p>
+              <p class="header__column" style="margin-right: 16rem;">Titulo</p>
+              <p class="header__column" style="margin-right: 9.3rem;">Álbum</p>
+              <div style="max-width: 10rem; margin-right: 5rem;">
+                <p class="header__column">Fecha en la que se añadio</p>
+              </div>
+              <TimeIcon />
+            </nav>
+          </header>
+        )
+    }
     <div class="tracks__container">
       {
+        playlist.tracks.items.length !== 0 ? (
         playlist.tracks.items.map((track, index) => (
           <a href="/track/sdasdase123e12323" class="card">
             <div style="position: relative; width: 1rem;">
@@ -158,7 +163,12 @@ console.log(playlist);
               </p>
             </div>
           </a>
-        ))
+        ))) : (
+          <section class="no__tracks">
+            <div class="line"></div>
+            <h2 class="no__tracks--text">No hay nada en esta lista ...</h2>
+          </section>
+        )
       }
     </div>
   </div>
@@ -494,5 +504,25 @@ console.log(playlist);
     top: -9px;
     opacity: 0;
     cursor: pointer;
+  }
+
+  .no__tracks {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 4rem;
+    gap: 2rem;
+  }
+
+  .no__tracks--text {
+    font-size: 1.5em;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .line {
+    width: 100%;
+    border: .5px solid hsla(0,0%,100%,.1);
   }
 </style>
