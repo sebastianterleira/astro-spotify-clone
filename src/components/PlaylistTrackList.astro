@@ -5,10 +5,10 @@ import { getCurrentUser } from "@services/service.getCurrentUser";
 import { getPlaylistTracks } from "@services/service.getPlaylist";
 import { convertDate } from "../lib/convertDate";
 import { msToMin } from "../lib/msToMin";
-import TimeIcon from "@icons/TimeIcon.astro";
 import CoverPlaylistDefaultLarge from "@icons/CoverPlaylistDefaultLarge.astro";
 import PlayXSIcon from "@icons/PlayXSIcon.astro";
 import Header from "@components/Header";
+import TableTracks from "@components/supcomponents/TableTracks";
 
 interface Props {
   user_id: string;
@@ -32,7 +32,7 @@ console.log(playlist);
 ---
 
 <Fragment>
-  <Header user={user} bg={"bg__header--itemPlaylist"} client:load/>
+  <Header user={user} bg={"bg__header--itemPlaylist"} client:load />
   <div class="wrapper">
     <div class="mask__bg"></div>
     <div class="mask__shadow"></div>
@@ -95,77 +95,66 @@ console.log(playlist);
   </div>
   <div class="list__tracks">
     <div class="mask__bg--2"></div>
-    {
-        playlist.tracks.items.length !== 0 && (
-          <header class="table__header">
-            <nav class="header__container">
-              <p class="header__column--number">#</p>
-              <p class="header__column" style="margin-right: 16rem;">Titulo</p>
-              <p class="header__column" style="margin-right: 9.3rem;">Álbum</p>
-              <div style="max-width: 10rem; margin-right: 5rem;">
-                <p class="header__column">Fecha en la que se añadio</p>
-              </div>
-              <TimeIcon />
-            </nav>
-          </header>
-        )
-    }
+    {playlist.tracks.items.length !== 0 && <TableTracks client:load/>}
     <div class="tracks__container">
       {
         playlist.tracks.items.length !== 0 ? (
-        playlist.tracks.items.map((track, index) => (
-          <a href="/track/sdasdase123e12323" class="card">
-            <div style="position: relative; width: 1rem;">
-              <p class="card__numberTrack position__trackNum">
-                {trackNum[index]}
-              </p>
-              <div class="icon__play">
-                <PlayXSIcon />
+          playlist.tracks.items.map((track, index) => (
+            <a href="/track/sdasdase123e12323" class="card">
+              <div style="position: relative; width: 1rem;">
+                <p class="card__numberTrack position__trackNum">
+                  {trackNum[index]}
+                </p>
+                <div class="icon__play">
+                  <PlayXSIcon />
+                </div>
               </div>
-            </div>
-            <div class="card__columnTitle">
-              <picture class="content__imgTrack">
-                <Image
-                  src={track.track.album.images[2].url}
-                  height="40"
-                  width="40"
-                  class="img__track"
-                  alt={`Cover del album de la cancion ${track.track.name}`}
-                />
-              </picture>
-              <div class="content__titles">
-                <p class="track__tile hiden__text">{track.track.name}</p>
-                <p class="track__artist hiden__text">
-                  {track.track.artists[0].name +
-                    `${
-                      track.track?.artists[1]?.name === undefined
-                        ? ""
-                        : ", " + track.track?.artists[1]?.name
-                    } `}
+              <div class="card__columnTitle">
+                <picture class="content__imgTrack">
+                  <Image
+                    src={track.track.album.images[2].url}
+                    height="40"
+                    width="40"
+                    class="img__track"
+                    alt={`Cover del album de la cancion ${track.track.name}`}
+                  />
+                </picture>
+                <div class="content__titles">
+                  <p class="track__tile hiden__text">{track.track.name}</p>
+                  <p class="track__artist hiden__text">
+                    {track.track.artists[0].name +
+                      `${
+                        track.track?.artists[1]?.name === undefined
+                          ? ""
+                          : ", " + track.track?.artists[1]?.name
+                      } `}
+                  </p>
+                </div>
+              </div>
+              <div class="card__columnAlbum">
+                <div class="content__album">
+                  <p class="album__name hiden__text">
+                    {track.track.album.name}
+                  </p>
+                </div>
+              </div>
+              <div class="card__columnAdded">
+                <div class="content__added">
+                  <p class="album__name hiden__text">
+                    {convertDate(track.added_at)}
+                  </p>
+                </div>
+              </div>
+              <div style="position: relative; margin-left: 2rem;">
+                <p class="album__name position_trackDuration hiden__text">
+                  {msToMin(track.track.duration_ms)}
                 </p>
               </div>
-            </div>
-            <div class="card__columnAlbum">
-              <div class="content__album">
-                <p class="album__name hiden__text">{track.track.album.name}</p>
-              </div>
-            </div>
-            <div class="card__columnAdded">
-              <div class="content__added">
-                <p class="album__name hiden__text">
-                  {convertDate(track.added_at)}
-                </p>
-              </div>
-            </div>
-            <div style="position: relative; margin-left: 2rem;">
-              <p class="album__name position_trackDuration hiden__text">
-                {msToMin(track.track.duration_ms)}
-              </p>
-            </div>
-          </a>
-        ))) : (
+            </a>
+          ))
+        ) : (
           <section class="no__tracks">
-            <div class="line"></div>
+            <div class="line" />
             <h2 class="no__tracks--text">No hay nada en esta lista ...</h2>
           </section>
         )
@@ -337,49 +326,6 @@ console.log(playlist);
     margin: 0;
   }
 
-  .table__header {
-    border-bottom: 1px solid transparent;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-    height: 2.25rem;
-    position: relative;
-    padding: 1.5rem 1.5rem 0 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .header__container {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0 1rem;
-    gap: 1rem;
-    border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
-    color: #a7a7a7;
-  }
-
-  .header__column {
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: inherit;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    white-space: unset;
-    word-break: break-all;
-    overflow: hidden;
-  }
-
-  .header__column--number {
-    font-size: 1rem;
-    font-weight: 400;
-    color: inherit;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    white-space: unset;
-    word-break: break-all;
-  }
-
   .card {
     display: flex;
     justify-content: flex-start;
@@ -523,6 +469,6 @@ console.log(playlist);
 
   .line {
     width: 100%;
-    border: .5px solid hsla(0,0%,100%,.1);
+    border: 0.5px solid hsla(0, 0%, 100%, 0.1);
   }
 </style>
