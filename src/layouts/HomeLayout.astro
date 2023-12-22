@@ -1,6 +1,7 @@
 ---
 import AsideMenu from "@components/AsideMenu.astro";
 import Layout from "./Layout.astro";
+import Footer from "@components/Footer";
 ---
 
 <Layout title="Spotify Clone">
@@ -11,7 +12,9 @@ import Layout from "./Layout.astro";
     <section class="section" id="home">
       <slot />
     </section>
-    <footer class="footer">Footer</footer>
+    <footer class="footer">
+      <Footer client:load transition:persist />
+    </footer>
   </main>
 </Layout>
 
@@ -62,7 +65,7 @@ import Layout from "./Layout.astro";
   }
 
   .footer {
-    min-height: 5rem;
+    min-height: 4.5rem;
     grid-area: player;
     border-radius: 0.5rem;
   }
@@ -83,4 +86,4 @@ import Layout from "./Layout.astro";
     width: 0.8rem;
     height: 2rem;
   }
-</>
+</style>
