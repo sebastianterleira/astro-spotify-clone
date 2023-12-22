@@ -1,0 +1,12 @@
+---
+import PlaylistTrackList from "@components/PlaylistTrackList.astro";
+import HomeLayout from "../../layouts/HomeLayout.astro";
+
+const { slug } = Astro.params;
+---
+
+<Fragment>
+  <HomeLayout>
+    <PlaylistTrackList user_id={slug} />
+  </HomeLayout>
+</Fragment>
