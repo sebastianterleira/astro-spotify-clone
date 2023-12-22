@@ -1,0 +1,44 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.5rem;
+}
+
+.footer__track {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  width: 26rem;
+}
+
+.picture {
+  margin-right: 0.6rem;
+}
+
+.picture__img {
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #fff;
+  padding-inline: 6px 12px;
+  margin-bottom: 1px;
+}
+
+.artist {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #b3b3b3;
+  padding-inline: 6px 12px;
+}
+
+.hidden__text {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
