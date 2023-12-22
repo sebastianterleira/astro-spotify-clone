@@ -48,11 +48,11 @@ export default function HeaderReact({ user, bg }) {
         </div>
         <div className={styles.nav__links}>
           <a
-            href="#"
+            href="https://github.com/sebastianterleira/astro-spotify-clone"
             className={styles["link__item--premium"]}
             aria-label="Sube a Premium"
           >
-            Descubrir Premium
+            Star on Github
           </a>
           <a
             href="https://open.spotify.com/download"
