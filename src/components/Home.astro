@@ -49,7 +49,7 @@ const playlistDataRecomendados = items.slice(0, 6);
         {
           playlistDataRecomendados.map((playlist) => (
             <Fragment>
-              <a class="card" href={`/playlist/${playlist.id}`} data-astro-prefetch="viewport">
+              <a class="card" href={`/playlist/${playlist.id}`} data-astro-prefetch="hover">
                 <div class="container__img">
                   {playlist.images[0]?.url !== undefined ? (
                     <picture>

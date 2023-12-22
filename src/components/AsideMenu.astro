@@ -17,11 +17,11 @@ console.log(token);
 <nav class="wrapper">
   <header class="box--1">
     <ul class="box__content">
-      <SideMenuItem href="/" data-astro-prefetch="viewport">
+      <SideMenuItem href="/" data-astro-prefetch="hover">
         <HomeIcon />
         Inicio
       </SideMenuItem>
-      <SideMenuItem href="#" data-astro-prefetch="viewport">
+      <SideMenuItem href="#" data-astro-prefetch="hover">
         <SearchIcon />
         Buscar
       </SideMenuItem>
@@ -33,7 +33,7 @@ console.log(token);
       {
         items.map((playlist) => (
           <Fragment>
-            <a href={`/playlist/${playlist.id}`} data-astro-prefetch="viewport">
+            <a href={`/playlist/${playlist.id}`} data-astro-prefetch="hover">
               <div class="playlists__item">
                 {playlist.images[0]?.url !== undefined ? (
                   <picture class="item__containerImg">

@@ -19,7 +19,7 @@ export default function PlaylistsAsideMenu() {
   }, []);
   
   return (
-    <ul className={styles["box__content--p"]} id="Biblioteca" data-astro-prefetch="viewport">
+    <ul className={styles["box__content--p"]} id="Biblioteca" data-astro-prefetch="hover">
       <a className={styles.enlace} href="/">
         <svg
           role="img"
