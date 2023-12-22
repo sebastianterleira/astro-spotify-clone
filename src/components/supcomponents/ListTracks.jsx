@@ -2,17 +2,21 @@ import { countTrack } from "../../lib/countTracks";
 import { convertDate } from "../../lib/convertDate";
 import { msToMin } from "../../lib/msToMin";
 import { getTrackId } from "../../lib/getTrackId";
+import { useState } from "react";
 import styles from "../../styles/ListTracks.module.css";
 
 export default function ListTracks({ playlist }) {
-  const trackNum = countTrack(playlist.tracks.total);
+  const handleClick = (track_id) => {
+    getTrackId.set(track_id);
+  };
 
+  const trackNum = countTrack(playlist.tracks.total);
   return (
     <>
       {playlist.tracks.items.length !== 0 ? (
         playlist?.tracks?.items.map((track, index) => (
           <div
-            onClick={() => getTrackId.set(track.track.id)}
+            onClick={() => handleClick(track.track.id)}
             class={styles.card}
             key={index}
           >
