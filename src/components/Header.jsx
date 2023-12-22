@@ -8,7 +8,6 @@ export default function HeaderReact({ user, bg }) {
     const bibliotecaSection = document.getElementById("header");
     function handleScroll() {
       if (playlistsDiv.scrollTop >= 240) {
-        console.log(playlistsDiv.scrollTop)
         bibliotecaSection.classList.add(bg);
       } else {
         bibliotecaSection.classList.remove(bg);

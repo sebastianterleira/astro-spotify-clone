@@ -11,7 +11,6 @@ const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
 
 const { items } = await getPlaylistsData(token);
-console.log(items);
 console.log(token);
 ---
 
