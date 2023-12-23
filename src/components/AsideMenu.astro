@@ -1,17 +1,9 @@
 ---
-import { Image } from "astro:assets";
-import { getPlaylistsData } from "@services/service.getAllPlaylists";
 import HomeIcon from "@icons/HomeIcon.astro";
 import SearchIcon from "@icons/SearchIcon.astro";
 import SideMenuItem from "@components/supcomponents/SideMenuItem.astro";
-import CoverPlaylistDefault from "@icons/CoverPlaylistDefault.astro";
-import PlaylistAsideMenu from "@components/supcomponents/InteractiveItemSideMenu"
-
-const hash = Astro.cookies.get("token");
-const token = hash.value.substring(1).split("&")[0].split("=")[1];
-
-const { items } = await getPlaylistsData(token);
-console.log(token);
+import PlaylistAsideMenu from "@components/supcomponents/InteractiveSideMenuItem";
+import PlaylistsAsideMenu from "./supcomponents/PlaylistsAsideMenu.astro";
 ---
 
 <nav class="wrapper">
@@ -28,43 +20,9 @@ console.log(token);
     </ul>
   </header>
   <section class="box--2">
-  <PlaylistAsideMenu client:load/>
+    <PlaylistAsideMenu client:load />
     <div class="playlists" id="playlistContainer">
-      {
-        items.map((playlist) => (
-          <Fragment>
-            <a href={`/playlist/${playlist.id}`} data-astro-prefetch="hover">
-              <div class="playlists__item">
-                {playlist.images[0]?.url !== undefined ? (
-                  <picture class="item__containerImg">
-                    <Image
-                      src={playlist.images[0]?.url}
-                      height="48"
-                      width="48"
-                      class="containerImg__img"
-                      alt={`Cover de portada del playlist ${playlist.name}`}
-                    />
-                  </picture>
-                ) : (
-                  <picture class="item__containerImg--svg">
-                    <CoverPlaylistDefault />
-                  </picture>
-                )}
-                <header class="item__wrapper">
-                  <h2 class="wrapper__title hiddenText">{playlist.name}</h2>
-                  <div class="wrapper__owner">
-                    <p class="owner__subtitle">
-                      {playlist.type === "playlist" ? "Lista" : ""}
-                    </p>
-                    <spam class="owner__subtitle--xs">•</spam>
-                    <p class="owner__subtitle">{playlist.owner.display_name}</p>
-                  </div>
-                </header>
-              </div>
-            </a>
-          </Fragment>
-        ))
-      }
+      <PlaylistsAsideMenu client:load />
     </div>
   </section>
 </nav>
@@ -145,80 +103,5 @@ console.log(token);
   .playlists::-webkit-scrollbar {
     width: 0.8rem;
     height: 2rem;
-  }
-
-  .playlists__item {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 0.5rem;
-    gap: 0.7rem;
-    border-radius: 6px;
-  }
-
-  .playlists__item:hover {
-    background-color: hsla(0, 0%, 40%, 0.1);
-  }
-
-  .item__containerImg {
-    background-color: #282828;
-    border-radius: 5px;
-  }
-
-  .containerImg__img {
-    border-radius: 5px;
-  }
-
-  .item__containerImg--svg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    width: 48px;
-    height: 48px;
-    background-color: #282828;
-    color: #b3b3b3;
-  }
-
-  .item__wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    padding: 0.2rem 0;
-  }
-
-  .wrapper__title {
-    word-break: break-all;
-    outline: none;
-    text-decoration: none;
-    overflow-wrap: anywhere;
-    font-size: 1em;
-    font-weight: 400;
-    color: #fff, #000000;
-  }
-
-  .wrapper__owner {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-
-  @supports (overflow-wrap: anywhere) {
-    .owner__subtitle {
-      overflow-wrap: anywhere;
-    }
-  }
-
-  .owner__subtitle {
-    font-size: 0.875rem;
-    font-weight: 400;
-    word-break: break-all;
-    color: #a7a7a7;
-  }
-
-  .owner__subtitle--xs {
-    font-size: 0.5rem;
-    font-weight: 400;
-    color: #a7a7a7;
   }
 </style>
