@@ -23,6 +23,8 @@ export default function PlaylistsAsideMenu() {
       id="Biblioteca"
       data-astro-prefetch="hover"
     >
+      <li>
+
       <a className={styles.enlace} href="/">
         <svg
           role="img"
@@ -36,6 +38,7 @@ export default function PlaylistsAsideMenu() {
         </svg>
         Tu biblioteca
       </a>
+      </li>
     </ul>
   );
 }

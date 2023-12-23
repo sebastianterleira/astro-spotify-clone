@@ -2,7 +2,6 @@ import styles from "../styles/Header.module.css";
 import { useEffect } from "react";
 
 export default function HeaderReact({ user, bg }) {
-  
   useEffect(() => {
     const playlistsDiv = document.getElementById("home");
     const bibliotecaSection = document.getElementById("header");
@@ -49,13 +48,14 @@ export default function HeaderReact({ user, bg }) {
           <a
             href="https://github.com/sebastianterleira/astro-spotify-clone"
             className={styles["link__item--premium"]}
-            aria-label="Sube a Premium"
+            aria-label="Star on Github"
           >
             Star on Github
           </a>
           <a
             href="https://open.spotify.com/download"
             className={styles["link__item--download"]}
+            aria-label="Instalar app"
           >
             <svg
               height="16"
