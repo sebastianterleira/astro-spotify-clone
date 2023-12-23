@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from "../../styles/aside.module.css"
+import styles from "../../styles/aside.module.css";
 
 export default function PlaylistsAsideMenu() {
   useEffect(() => {
@@ -8,7 +8,6 @@ export default function PlaylistsAsideMenu() {
     function handleScroll() {
       if (playlistsDiv.scrollTop >= 1) {
         bibliotecaSection.classList.add("bottom-shadow");
-        console.log(playlistsDiv.scrollTop)
       } else {
         bibliotecaSection.classList.remove("bottom-shadow");
       }
@@ -17,9 +16,13 @@ export default function PlaylistsAsideMenu() {
     // Agregar el eventListener al evento de desplazamiento
     playlistsDiv.addEventListener("scroll", handleScroll);
   }, []);
-  
+
   return (
-    <ul className={styles["box__content--p"]} id="Biblioteca" data-astro-prefetch="hover">
+    <ul
+      className={styles["box__content--p"]}
+      id="Biblioteca"
+      data-astro-prefetch="hover"
+    >
       <a className={styles.enlace} href="/">
         <svg
           role="img"

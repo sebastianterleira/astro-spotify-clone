@@ -7,7 +7,6 @@ export default function TableTracks() {
     const bibliotecaSection = document.getElementById("table__tracks");
     function handleScroll() {
       if (playlistsDiv.scrollTop >= 300) {
-        console.log(playlistsDiv.scrollTop);
         bibliotecaSection.classList.add(style.header__pos);
       } else {
         bibliotecaSection.classList.remove(style.header__pos);
@@ -18,7 +17,7 @@ export default function TableTracks() {
 
   return (
     <>
-    <div style={{paddingBottom: "1.5rem"}}></div>
+      <div style={{ paddingBottom: "1.5rem" }}></div>
       <header
         className={style.table__header}
         style={{ top: "4.0625rem" }}

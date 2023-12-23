@@ -2,7 +2,6 @@ import { countTrack } from "../../lib/countTracks";
 import { convertDate } from "../../lib/convertDate";
 import { msToMin } from "../../lib/msToMin";
 import { getTrackId } from "../../lib/getTrackId";
-import { useState } from "react";
 import styles from "../../styles/ListTracks.module.css";
 
 export default function ListTracks({ playlist }) {
