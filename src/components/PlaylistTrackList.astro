@@ -25,7 +25,7 @@ const user = await getCurrentUser(token);
 ---
 
 <Fragment>
-  <Header user={user} bg={"bg__header--itemPlaylist"} client:load />
+  <Header user={user} bg={"bg__header--itemPlaylist"} client:idle />
   <div class="wrapper">
     <div class="mask__bg"></div>
     <div class="mask__shadow"></div>
@@ -90,7 +90,7 @@ const user = await getCurrentUser(token);
     <div class="mask__bg--2"></div>
     {playlist.tracks.items.length !== 0 && <TableTracks client:load />}
     <div class="tracks__container">
-      <ListTracks playlist={playlist} client:load />
+      <ListTracks playlist={playlist} client:visible />
     </div>
   </div>
 </Fragment>
