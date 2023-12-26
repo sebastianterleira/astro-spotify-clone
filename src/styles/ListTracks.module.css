@@ -36,6 +36,8 @@
   font-variant: tabular-nums;
   color: #a7a7a7;
   margin-right: 0.6rem;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .position__trackNum {
@@ -57,6 +59,8 @@
 
 .img__track {
   border-radius: 4px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .content__titles {
@@ -71,6 +75,8 @@
   font-size: 1em;
   font-weight: 400;
   color: #fff;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .track__artist {
@@ -78,6 +84,8 @@
   font-weight: 400;
   word-break: break-all;
   color: #a7a7a7;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .hidden__text {
@@ -102,6 +110,8 @@
   font-weight: 400;
   word-break: break-all;
   color: #a7a7a7;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .card__columnAdded {
@@ -133,6 +143,8 @@
   font-size: 1.5em;
   font-weight: 800;
   letter-spacing: -1px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .line {

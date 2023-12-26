@@ -20,10 +20,12 @@ const { href, gapCustom } = Astro.props;
     gap: 1.2rem;
     color: #b3b3b3;
     font-weight: 700;
-    transition: color .4s ease;
+    transition: color 0.4s ease;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   a:hover {
-    color: #fff
+    color: #fff;
   }
 </style>

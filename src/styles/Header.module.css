@@ -63,6 +63,8 @@
   padding-inline-end: var(--encore-spacing-base, 16px);
   font-size: 0.875em;
   font-weight: 700;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .link__item--download {
@@ -79,6 +81,8 @@
   padding-block-end: var(--encore-spacing-tighter-4, 4px);
   padding-inline-start: 13px;
   padding-inline-end: var(--encore-spacing-base, 16px);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .link__item--premium:hover {
@@ -91,6 +95,8 @@
 
 .user__img {
   border-radius: 50%;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .content__user {

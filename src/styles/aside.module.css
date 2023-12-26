@@ -5,7 +5,9 @@
   color: #b3b3b3;
   font-weight: 700;
   transition: color .4s ease;
-  gap: .8rem
+  gap: .8rem;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .enlace:hover {

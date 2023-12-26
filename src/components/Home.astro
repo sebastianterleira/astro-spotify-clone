@@ -6,9 +6,7 @@ import { getGreeting } from "../lib/getGreeting";
 import { getCurrentUser } from "@services/service.getCurrentUser";
 import PlaylistsHome from "@components/supcomponents/PlaylistsHome.astro";
 import CoverPlaylistDefault from "@icons/CoverPlaylistDefault.astro";
-import CoverPlaylistDefaultLarge from "@icons/CoverPlaylistDefaultLarge.astro";
 import Play from "@icons/PlaySmallIcon.astro";
-import PlayLarge from "@icons/PlayLargeIcon.astro";
 import Header from "@components/Header";
 
 const hash = Astro.cookies.get("token");
@@ -139,6 +137,8 @@ const playlistDataRecomendados = items.slice(0, 6);
     font-size: 1.95em;
     font-weight: 700;
     letter-spacing: -1px;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   .wave--grid {
@@ -146,6 +146,8 @@ const playlistDataRecomendados = items.slice(0, 6);
     font-size: 1.5em;
     font-weight: 700;
     letter-spacing: -1px;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   .home__pov {
@@ -210,6 +212,8 @@ const playlistDataRecomendados = items.slice(0, 6);
   .playlist__cover {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   .container__svg {
@@ -226,6 +230,8 @@ const playlistDataRecomendados = items.slice(0, 6);
   .playlist__name {
     font-weight: 500;
     font-size: 0.9em;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   .hiden__text {

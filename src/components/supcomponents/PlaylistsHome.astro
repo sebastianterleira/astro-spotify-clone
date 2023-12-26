@@ -21,8 +21,6 @@ const playlists = items.map((arrTrack, index) => {
     return arrTrack;
   }
 });
-
-console.log(playlists);
 ---
 
 <Fragment>
@@ -95,6 +93,8 @@ console.log(playlists);
     border-radius: 6px;
     display: block;
     position: relative;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   .button__play {
@@ -138,6 +138,8 @@ console.log(playlists);
     font-weight: 700;
     color: #fff;
     padding-block-end: 4px;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   .parraf__hidden {
@@ -158,6 +160,8 @@ console.log(playlists);
     font-size: 0.875rem;
     color: #a7a7a7;
     font-weight: 400;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   .content__svg {

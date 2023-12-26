@@ -29,6 +29,8 @@
   display: -webkit-box;
   white-space: unset;
   word-break: break-all;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .header__column {
@@ -41,6 +43,8 @@
   white-space: unset;
   word-break: break-all;
   overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .header__pos {
