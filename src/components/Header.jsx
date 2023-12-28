@@ -1,7 +1,7 @@
 import styles from "../styles/Header.module.css";
 import { useEffect } from "react";
 
-export default function HeaderReact({ user, bg }) {
+export default function HeaderReact({ user, bg, active }) {
   useEffect(() => {
     const playlistsDiv = document.getElementById("home");
     const bibliotecaSection = document.getElementById("header");
@@ -19,7 +19,7 @@ export default function HeaderReact({ user, bg }) {
     <header className={styles.header} id="header">
       <nav className={styles.nav}>
         <div className={styles.nav__buttons}>
-          <button className={styles.buttons__item} aria-label="Volver">
+          <a href="/" className={active ? styles.buttons__active : styles.buttons__item} aria-label="Volver">
             <svg
               role="img"
               height="16"
@@ -30,19 +30,7 @@ export default function HeaderReact({ user, bg }) {
             >
               <path d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"></path>
             </svg>
-          </button>
-          <button className={styles.buttons__item} aria-label="Avanzar">
-            <svg
-              height="16"
-              width="16"
-              role="img"
-              aria-hidden="true"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-            >
-              <path d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"></path>
-            </svg>
-          </button>
+          </a>
         </div>
         <div className={styles.nav__links}>
           <a

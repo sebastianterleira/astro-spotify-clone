@@ -25,7 +25,7 @@ const user = await getCurrentUser(token);
 ---
 
 <Fragment>
-  <Header user={user} bg={"bg__header--itemPlaylist"} client:visible/>
+  <Header user={user} bg={"bg__header--itemPlaylist"} active={true} client:visible/>
   <div class="wrapper">
     <div class="mask__bg"></div>
     <div class="mask__shadow"></div>
