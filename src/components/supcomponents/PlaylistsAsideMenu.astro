@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import { getPlaylistsData } from "@services/service.getAllPlaylists";
+import { getAllPlaylists } from "@services/service.getAllPlaylists";
 import CoverPlaylistDefault from "@icons/CoverPlaylistDefault.astro";
 
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
 
-const { items } = await getPlaylistsData(token);
+const { items } = await getAllPlaylists(token);
 ---
 
 <Fragment>

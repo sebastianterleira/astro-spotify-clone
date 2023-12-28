@@ -1,5 +1,5 @@
 ---
-import { getPlaylistsData } from "@services/service.getAllPlaylists";
+import { getAllPlaylists } from "@services/service.getAllPlaylists";
 import { getCurrentUser } from "@services/service.getCurrentUser";
 import PlaylistsHome from "@components/supcomponents/PlaylistsHome.astro";
 import Header from "@components/Header";
@@ -10,7 +10,7 @@ const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
 
 // Lista de Playlists
-const { items } = await getPlaylistsData(token);
+const { items } = await getAllPlaylists(token);
 
 // Obtener la informacion del usuario actual
 const user = await getCurrentUser(token);

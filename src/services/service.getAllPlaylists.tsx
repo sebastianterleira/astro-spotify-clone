@@ -1,7 +1,7 @@
 import { type PlaylistsSpotifyAPIResponse } from "../types/playlists.type"
 
-export const getPlaylistsData = async (token: string) => {
-  const url = "https://api.spotify.com/v1/me/playlists";
+export const getAllPlaylists = async (token: string) => {
+  const url = "https://api.spotify.com/v1/me/playlists?limit=12";
   try {
     const response = await fetch(url, {
       headers: {
