@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import { getPlaylistsData } from "@services/service.getAllPlaylists";
-import { getGreeting } from "../lib/getGreeting";
 import { getCurrentUser } from "@services/service.getCurrentUser";
 import PlaylistsHome from "@components/supcomponents/PlaylistsHome.astro";
 import CoverPlaylistDefault from "@icons/CoverPlaylistDefault.astro";
 import Play from "@icons/PlaySmallIcon.astro";
 import Header from "@components/Header";
+import GreetingTitle from "./GreetingTitle";
 
 const hash = Astro.cookies.get("token");
 const token = hash.value.substring(1).split("&")[0].split("=")[1];
@@ -16,9 +16,6 @@ const { items } = await getPlaylistsData(token);
 
 // Obtener la informacion del usuario actual
 const user = await getCurrentUser(token);
-
-// getGreeting
-const greeting = getGreeting();
 ---
 
 <Fragment>
@@ -26,10 +23,10 @@ const greeting = getGreeting();
   <div class="wrapper">
     <div class="mask__bg"></div>
     <article class="home__pov">
-      <h1 class="wave">{greeting}</h1>
+      <GreetingTitle client:visible />
       <div class="card__container">
         {
-          playlistDataRecomendados.map((playlist) => (
+          items.slice(0, 6).map((playlist) => (
             <Fragment>
               <a class="card" href={`/playlist/${playlist.id}`} data-astro-prefetch="hover">
                 <div class="container__img">
