@@ -17,7 +17,7 @@ const { items } = await getPlaylistsData(token);
       <a
         href={`playlist/${playlist.id}`}
         class="container__playlist"
-        data-astro-prefetch="viewport"
+        data-astro-prefetch="hover"
       >
         {playlist.images[0]?.url !== undefined ? (
           <picture class="content__img">
