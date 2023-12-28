@@ -1,14 +1,14 @@
 ---
 import { Image } from "astro:assets";
-import { getPlaylistsData } from "@services/service.getAllPlaylists";
+import { type Item } from "../../types/playlists.type"
 import CoverPlaylistDefaultLarge from "@icons/CoverPlaylistDefaultLarge.astro";
 import PlayLarge from "@icons/PlayLargeIcon.astro";
 
-const hash = Astro.cookies.get("token");
-const token = hash.value.substring(1).split("&")[0].split("=")[1];
+interface Props {
+  items: Item[]
+}
 
-// Lista de Playlists
-const { items } = await getPlaylistsData(token);
+  const { items } = Astro.props
 ---
 
 <Fragment>
@@ -17,7 +17,6 @@ const { items } = await getPlaylistsData(token);
       <a
         href={`playlist/${playlist.id}`}
         class="container__playlist"
-        data-astro-prefetch="hover"
       >
         {playlist.images[0]?.url !== undefined ? (
           <picture class="content__img">
