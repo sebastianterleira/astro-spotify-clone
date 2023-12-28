@@ -45,7 +45,7 @@ const { items } = await getPlaylistsData(token);
             {playlist.name}
           </h3>
           <p class="playlist__tracks parraf__hidden--clamp2">
-            {playlist.arrTrack.slice(0, 3).map((track) => track?.track?.name)}
+            {playlist.owner.display_name}
           </p>
         </div>
       </a>
