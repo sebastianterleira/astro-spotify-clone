@@ -24,8 +24,16 @@ const playlist = await getPlaylistTracks(token, user_id);
 const user = await getCurrentUser(token);
 ---
 
-<Fragment>
-  <Header user={user} bg={"bg__header--itemPlaylist"} active={true} client:visible/>
+<div
+  class="conteiner__playlist"
+  transition:name={`playlist ${playlist?.id} box`}
+>
+  <Header
+    user={user}
+    bg={"bg__header--itemPlaylist"}
+    active={true}
+    client:visible
+  />
   <div class="wrapper">
     <div class="mask__bg"></div>
     <div class="mask__shadow"></div>
@@ -98,7 +106,7 @@ const user = await getCurrentUser(token);
       <ListTracks playlist={playlist} client:visible />
     </div>
   </div>
-</Fragment>
+</div>
 
 <style>
   :root {
@@ -114,6 +122,11 @@ const user = await getCurrentUser(token);
     max-height: 25rem;
     min-height: 21.25rem;
     position: relative;
+  }
+
+  .conteiner__playlist {
+    display: flex;
+    flex-direction: column;
   }
 
   .mask__bg {

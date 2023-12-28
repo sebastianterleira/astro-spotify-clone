@@ -17,6 +17,7 @@ interface Props {
       <a
         href={`playlist/${playlist.id}`}
         class="container__playlist"
+        transition:name={`playlist ${playlist?.id} box`}
       >
         {playlist.images[0]?.url !== undefined ? (
           <picture class="content__img">
