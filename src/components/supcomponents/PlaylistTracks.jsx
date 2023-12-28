@@ -4,16 +4,16 @@ import { msToMin } from "../../lib/msToMin";
 import { getTrackId } from "../../lib/getTrackId";
 import styles from "../../styles/ListTracks.module.css";
 
-export default function ListTracks({ playlist }) {
+export default function ListTracks({ listTracks }) {
   const handleClick = (track_id) => {
     getTrackId.set(track_id);
   };
 
-  const trackNum = countTrack(playlist.tracks.total);
+  const trackNum = countTrack(listTracks.total);
   return (
     <>
-      {playlist.tracks.items.length !== 0 ? (
-        playlist?.tracks?.items.map((track, index) => (
+      {listTracks?.items?.length !== 0 ? (
+        listTracks?.items?.map((track, index) => (
           <div
             onClick={() => handleClick(track.track.id)}
             className={styles.card}

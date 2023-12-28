@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import { getCurrentUser } from "@services/service.getCurrentUser";
-import { getPlaylistTracks } from "@services/service.getPlaylist";
+import { getPlaylist } from "@services/service.getPlaylist";
+import { getTracksByPlaylist } from "@services/service.getTracksByPlaylist";
 import ListTracks from "@components/supcomponents/PlaylistTracks";
 import CoverPlaylistDefaultLarge from "@icons/CoverPlaylistDefaultLarge.astro";
 import Header from "@components/Header";
@@ -18,10 +19,13 @@ const hash = Astro.cookies.get("token");
 const token = hash?.value.substring(1).split("&")[0].split("=")[1];
 
 // Obtener el Playlist actual
-const playlist = await getPlaylistTracks(token, user_id);
+const playlist = await getPlaylist(token, user_id);
 
 // OBtener datos del usuario
 const user = await getCurrentUser(token);
+
+// Obtener tracks del Playlist actual
+const listTracks = await getTracksByPlaylist(token, user_id);
 ---
 
 <div
@@ -62,11 +66,11 @@ const user = await getCurrentUser(token);
       <span class="playlist__type">Lista</span>
       <header>
         <h1
-          class={playlist.name.length <= 10
+          class={playlist?.name?.length <= 10
             ? "playlist__name"
-            : playlist.name.length <= 19
+            : playlist?.name?.length <= 19
               ? "playlist__name--xl"
-              : playlist.name.length <= 25
+              : playlist?.name?.length <= 25
                 ? "playlist__name--lg"
                 : "playlist__name--sm"}
           transition:name={`playlist ${playlist.id} name`}
@@ -90,7 +94,7 @@ const user = await getCurrentUser(token);
           <p class="playlist__display_name">{playlist.owner.display_name}</p>
           <span class="space__char">•</span>
           <p class="playlist__count_tracks">
-            {`${playlist.tracks.items.length} canciones`}
+            {`${listTracks?.items?.length} canciones`}
           </p>
           <p class="playlist__followers">
             {`, ${playlist.followers.total} me gusta`}
@@ -101,9 +105,9 @@ const user = await getCurrentUser(token);
   </div>
   <div class="list__tracks">
     <div class="mask__bg--2"></div>
-    {playlist.tracks.items.length !== 0 && <TableTracks client:load />}
+    {listTracks?.items?.length !== 0 && <TableTracks client:load />}
     <div class="tracks__container">
-      <ListTracks playlist={playlist} client:visible />
+      <ListTracks listTracks={listTracks} client:visible />
     </div>
   </div>
 </div>
