@@ -38,10 +38,14 @@ const user = await getCurrentUser(token);
             height="232"
             class="playlist__img"
             alt="Imagen de portada del playlist que escogiste"
+            transition:name={`playlist ${playlist.id} image`}
           />
         </picture>
       ) : (
-        <picture class="cover__playlist default__coverPlaylist">
+        <picture
+          class="cover__playlist default__coverPlaylist"
+          transition:name={`playlist ${playlist.id} default`}
+        >
           <CoverPlaylistDefaultLarge />
         </picture>
       )
@@ -57,6 +61,7 @@ const user = await getCurrentUser(token);
               : playlist.name.length <= 25
                 ? "playlist__name--lg"
                 : "playlist__name--sm"}
+          transition:name={`playlist ${playlist.id} name`}
         >
           {playlist.name}
         </h1>
