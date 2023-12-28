@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import { getPlaylistsData } from "@services/service.getAllPlaylists";
-import { getTracks } from "@services/service.tracks";
 import CoverPlaylistDefaultLarge from "@icons/CoverPlaylistDefaultLarge.astro";
 import PlayLarge from "@icons/PlayLargeIcon.astro";
 
@@ -10,22 +9,11 @@ const token = hash.value.substring(1).split("&")[0].split("=")[1];
 
 // Lista de Playlists
 const { items } = await getPlaylistsData(token);
-const tracks = await getTracks(token);
-
-const playlists = items.map((arrTrack, index) => {
-  const track = tracks[index];
-
-  if (track) {
-    return { ...arrTrack, arrTrack: track };
-  } else {
-    return arrTrack;
-  }
-});
 ---
 
 <Fragment>
   {
-    playlists.map((playlist) => (
+    items.map((playlist) => (
       <a
         href={`playlist/${playlist.id}`}
         class="container__playlist"

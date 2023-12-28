@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import { getPlaylistsData } from "@services/service.getAllPlaylists";
-import { getTracks } from "@services/service.tracks";
 import { getGreeting } from "../lib/getGreeting";
 import { getCurrentUser } from "@services/service.getCurrentUser";
 import PlaylistsHome from "@components/supcomponents/PlaylistsHome.astro";
@@ -14,28 +13,12 @@ const token = hash.value.substring(1).split("&")[0].split("=")[1];
 
 // Lista de Playlists
 const { items } = await getPlaylistsData(token);
-const tracks = await getTracks(token);
-
-const playlists = items.map((arrTrack, index) => {
-  const track = tracks[index];
-
-  if (track) {
-    return { ...arrTrack, arrTrack: track };
-  } else {
-    return arrTrack;
-  }
-});
-
-console.log(playlists)
 
 // Obtener la informacion del usuario actual
 const user = await getCurrentUser(token);
 
 // getGreeting
 const greeting = getGreeting();
-
-// Lista de Playlists recortada
-const playlistDataRecomendados = items.slice(0, 6);
 ---
 
 <Fragment>
