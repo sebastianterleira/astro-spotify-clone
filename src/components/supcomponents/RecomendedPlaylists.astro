@@ -17,7 +17,7 @@ const { items } = Astro.props;
       <a
         class="card"
         href={`/playlist/${playlist.id}`}
-        data-astro-prefetch="hover"
+        data-astro-prefetch="viewport"
       >
         <div class="container__img">
           {playlist.images[0]?.url !== undefined ? (

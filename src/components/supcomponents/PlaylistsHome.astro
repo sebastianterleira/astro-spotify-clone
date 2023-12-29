@@ -14,7 +14,7 @@ interface Props {
 <Fragment>
   {
     items.map((playlist) => (
-      <a href={`playlist/${playlist.id + "_a"}`} class="container__playlist">
+      <a href={`playlist/${playlist.id + "_a"}`} class="container__playlist" data-astro-prefetch="viewport">
         {playlist.images[0]?.url !== undefined ? (
           <picture class="content__img">
             <Image

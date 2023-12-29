@@ -19,7 +19,7 @@ export default function HeaderReact({ user, bg, active }) {
     <header className={styles.header} id="header">
       <nav className={styles.nav}>
         <div className={styles.nav__buttons}>
-          <a href="/" className={active ? styles.buttons__active : styles.buttons__item} aria-label="Volver">
+          <a href="/" className={active ? styles.buttons__active : styles.buttons__item} aria-label="Volver" data-astro-prefetch="viewport">
             <svg
               role="img"
               height="16"
