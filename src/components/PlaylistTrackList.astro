@@ -54,7 +54,7 @@ const listTracks = await getTracksByPlaylist(token, user_id);
       ) : (
         <picture
           class="cover__playlist default__coverPlaylist"
-          transition:name={`playlist ${playlist.id} default`}
+          transition:name={`playlist ${transition ? playlist.id : playlist.id + "_a"} default`}
         >
           <CoverPlaylistDefaultLarge />
         </picture>
