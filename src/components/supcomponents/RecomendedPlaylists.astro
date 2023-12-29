@@ -28,10 +28,11 @@ const { items } = Astro.props;
                 width="48"
                 class="playlist__cover"
                 alt={`Cover de portada del playlist ${playlist.name}`}
+                transition:name={`playlist ${playlist.id} image`}
               />
             </picture>
           ) : (
-            <picture class="container__svg">
+            <picture class="container__svg" transition:name={`playlist ${playlist.id} default`}>
               <CoverPlaylistDefault />
             </picture>
           )}

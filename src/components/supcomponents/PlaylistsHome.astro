@@ -14,7 +14,7 @@ interface Props {
 <Fragment>
   {
     items.map((playlist) => (
-      <a href={`playlist/${playlist.id}`} class="container__playlist">
+      <a href={`playlist/${playlist.id + "_a"}`} class="container__playlist">
         {playlist.images[0]?.url !== undefined ? (
           <picture class="content__img">
             <Image
@@ -23,14 +23,14 @@ interface Props {
               width="169"
               class="img__playlist"
               alt={`Cover de portada del playlist ${playlist.name}`}
-              transition:name={`playlist ${playlist.id} image`}
+              transition:name={`playlist ${playlist.id + "_a"} image`}
             />
             <div class="button__play">
               <PlayLarge />
             </div>
           </picture>
         ) : (
-          <picture class="content__svg" transition:name={`playlist ${playlist.id} default`}>
+          <picture class="content__svg" transition:name={`playlist ${playlist.id + "_a"} default`}>
             <CoverPlaylistDefaultLarge />
             <div class="button__play pos__bottonplay">
               <PlayLarge />

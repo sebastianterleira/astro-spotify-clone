@@ -10,9 +10,10 @@ import TableTracks from "@components/supcomponents/TableTracks";
 
 interface Props {
   user_id: string;
+  transition?: boolean ;
 }
 
-const { user_id } = Astro.props;
+const { user_id, transition } = Astro.props;
 
 // Obtener el token del hash
 const hash = Astro.cookies.get("token");
@@ -47,8 +48,7 @@ const listTracks = await getTracksByPlaylist(token, user_id);
             height="232"
             class="playlist__img"
             alt="Imagen de portada del playlist que escogiste"
-            transition:name={`playlist ${playlist.id} image`}
-            transition:animate={"slide"}
+            transition:name={`playlist ${transition ? playlist.id : playlist.id + "_a"} image` }
           />
         </picture>
       ) : (

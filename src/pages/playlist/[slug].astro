@@ -3,10 +3,20 @@ import PlaylistTrackList from "@components/PlaylistTrackList.astro";
 import HomeLayout from "../../layouts/HomeLayout.astro";
 
 const { slug } = Astro.params;
+
+const obj = {}
+
+if (slug.split("_a").length === 2) {
+  obj.playlist_id = slug.split("_a")[0];
+  obj.bool = false;
+} else {
+  obj.playlist_id = slug.split("_a")[0];
+  obj.bool = true;
+}
 ---
 
 <Fragment>
   <HomeLayout>
-    <PlaylistTrackList user_id={slug} />
+    <PlaylistTrackList user_id={obj.playlist_id} transition={obj.bool} />
   </HomeLayout>
 </Fragment>
