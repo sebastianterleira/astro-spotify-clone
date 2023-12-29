@@ -28,10 +28,7 @@ const user = await getCurrentUser(token);
 const listTracks = await getTracksByPlaylist(token, user_id);
 ---
 
-<div
-  class="conteiner__playlist"
-  transition:name={`playlist ${playlist?.id} box`}
->
+<div class="conteiner__playlist">
   <Header
     user={user}
     bg={"bg__header--itemPlaylist"}
@@ -51,6 +48,7 @@ const listTracks = await getTracksByPlaylist(token, user_id);
             class="playlist__img"
             alt="Imagen de portada del playlist que escogiste"
             transition:name={`playlist ${playlist.id} image`}
+            transition:animate={"slide"}
           />
         </picture>
       ) : (
@@ -73,7 +71,6 @@ const listTracks = await getTracksByPlaylist(token, user_id);
               : playlist?.name?.length <= 25
                 ? "playlist__name--lg"
                 : "playlist__name--sm"}
-          transition:name={`playlist ${playlist.id} name`}
         >
           {playlist.name}
         </h1>

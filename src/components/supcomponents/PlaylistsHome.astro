@@ -14,11 +14,7 @@ interface Props {
 <Fragment>
   {
     items.map((playlist) => (
-      <a
-        href={`playlist/${playlist.id}`}
-        class="container__playlist"
-        transition:name={`playlist ${playlist?.id} box`}
-      >
+      <a href={`playlist/${playlist.id}`} class="container__playlist">
         {playlist.images[0]?.url !== undefined ? (
           <picture class="content__img">
             <Image
@@ -42,7 +38,7 @@ interface Props {
           </picture>
         )}
         <div class="container__info">
-          <h3 class="playlist__name parraf__hidden" transition:name={`playlist ${playlist.id} name`}>
+          <h3 class="playlist__name parraf__hidden" >
             {playlist.name}
           </h3>
           <p class="playlist__tracks parraf__hidden--clamp2">
