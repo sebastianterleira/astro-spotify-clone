@@ -77,6 +77,11 @@
   color: #fff;
   user-select: none;
   -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.track__tile:hover {
+  text-decoration-line: underline;
 }
 
 .track__artist {
@@ -86,6 +91,12 @@
   color: #a7a7a7;
   user-select: none;
   -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.track__artist:hover {
+  color: #fff;
+  text-decoration-line: underline;
 }
 
 .hidden__text {
@@ -112,6 +123,12 @@
   color: #a7a7a7;
   user-select: none;
   -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.album__name:hover {
+  color: #fff;
+  text-decoration-line: underline;
 }
 
 .card__columnAdded {
@@ -151,4 +168,3 @@
   width: 100%;
   border: 0.5px solid hsla(0, 0%, 100%, 0.1);
 }
-

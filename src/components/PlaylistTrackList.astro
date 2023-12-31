@@ -259,7 +259,14 @@ const listTracks = await getTracksByPlaylist(token, user_id);
     font-weight: 700;
     user-select: none;
     -webkit-user-select: none;
+    cursor: pointer;
   }
+
+  .playlist__display_name:hover {
+    color: #fff;
+    text-decoration-line: underline;
+  }
+  
 
   .space__char {
     font-weight: 400;

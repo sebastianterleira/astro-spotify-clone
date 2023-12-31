@@ -43,7 +43,7 @@ export default function ListTracks({ listTracks }) {
                   height={40}
                   width={40}
                   className={styles.img__track}
-                  alt={`Cover del album de la cancion ${track.track.name}`}
+                  alt={`Cover del album de la canción ${track.track.name}`}
                 />
               </picture>
               <div className={styles.content__titles}>
