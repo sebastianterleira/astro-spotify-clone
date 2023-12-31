@@ -94,7 +94,6 @@ export default function Footer() {
         </header>
       </div>
       <div className={styles.footer__player}>
-        <div>
           {
             $getTrackId !== null ? (
               <button className={styles.button__player} onClick={handleClick}>
