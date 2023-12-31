@@ -47,7 +47,7 @@
   align-items: center;
   justify-content: center;
   padding-left: 0.5rem;
-  width: 35rem;
+  width: 34rem;
 }
 
 .button__player {
@@ -83,6 +83,14 @@
   width: 2rem;
   height: 2rem;
   border-radius: 2rem;
-  background-color: #fff;  
+  background-color: hsla(0,0%,100%,.3);
   cursor: not-allowed;
+}
+
+.footer__volume {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 0.5rem;
+  width: 24rem;
 }
