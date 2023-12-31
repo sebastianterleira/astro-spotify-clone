@@ -102,7 +102,7 @@ export default function Footer() {
               </button>
               ) : (
                 <button className={styles.button__player__DISABLE}>
-                  <Pause />
+                  <Play />
                 </button>
               )
             }
