@@ -40,14 +40,6 @@ export default function Footer() {
   const audioRef = useRef<HTMLAudioElement | undefined>()
 
   const handleClick = () => {
-    if (isPlaying && track?.preview_url) {
-      audioRef.current.pause();
-      console.log(isPlaying)
-    } else {
-      audioRef.current.play();
-      console.log(isPlaying)
-      audioRef.current.volume = 0.6
-    }
     setIsPlaying(!isPlaying);
   }
 
@@ -61,8 +53,16 @@ export default function Footer() {
       const data = await getTrack(token, $getTrackId);
       setTrack(data);
     };
+
     getMusic();
   }, [$getTrackId]);
+
+  useEffect(() => {
+    isPlaying ? audioRef.current?.play() : audioRef.current?.pause();
+  }, [isPlaying]);
+
+  console.log(audioRef.current?.duration)
+
   return (
     <div className={styles.footer}>
       <div className={styles.footer__track}>
