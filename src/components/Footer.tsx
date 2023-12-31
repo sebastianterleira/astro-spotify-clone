@@ -5,6 +5,7 @@ import { useStore } from '@nanostores/react';
 import { getTrackId } from '../lib/getTrackId';
 import styles from "../styles/Footer.module.css";
 import Cookies from "js-cookie";
+import { Slider } from "./Slider";
 
 const Pause = () => (
   <svg
@@ -109,7 +110,15 @@ export default function Footer() {
             track?.preview_url &&
             <audio ref={audioRef} src={track?.preview_url} autoPlay={isPlaying} />
           }
-        </div>
+      </div>
+      <div className={styles.footer__volume}>
+          <Slider defaultValue={[100]} max={100} min={0} style={{ width: "98px" }} onValueChange={(value) => {
+            if ($getTrackId && track?.preview_url) {
+              const [newVolume] = value;
+              audioRef.current.volume = newVolume / 100;
+              }
+            }}
+          />
       </div>
     </div>
   );
