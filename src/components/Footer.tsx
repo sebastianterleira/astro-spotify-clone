@@ -158,7 +158,7 @@ export default function Footer() {
             volume < 0.7 ? <VolumeMediumIcon /> : <VolumeHighIcon /> 
           }
         </button>
-          <Slider defaultValue={[100]} max={100} min={0} style={{ width: "98px" }} onValueChange={(value) => {
+          <Slider defaultValue={[100]} max={100} min={0} value={[volume * 100]} style={{ width: "98px" }} onValueChange={(value) => {
               const [newVolume] = value;
               const volumeValue = newVolume / 100;
               setVolume(volumeValue);
