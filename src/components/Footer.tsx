@@ -54,6 +54,7 @@ const CoverPlaylistDefault = () => (
 export default function Footer() {
   const [track, setTrack] = useState<SpotifyTrackAPIResponse | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(1);
   const audioRef = useRef<HTMLAudioElement | undefined>()
 
   const handleClick = () => {
@@ -78,7 +79,20 @@ export default function Footer() {
     isPlaying ? audioRef.current?.play() : audioRef.current?.pause();
   }, [isPlaying]);
 
-  console.log(audioRef.current?.duration)
+  useEffect(() => {
+    audioRef.current.volume = volume
+  }, [volume]);
+
+  useEffect(() => {
+    if (track?.preview_url && $getTrackId) {
+      audioRef.current.src = track?.preview_url;
+      audioRef.current.volume = volume
+      audioRef.current.play();
+      setIsPlaying(true);
+    } else {
+      setIsPlaying(false);
+    }
+  }, [track?.preview_url]);
 
   return (
     <div className={styles.footer}>
@@ -111,9 +125,9 @@ export default function Footer() {
       </div>
       <div className={styles.footer__player}>
           {
-            $getTrackId !== null ? (
+            $getTrackId && track?.preview_url ? (
               <button className={styles.button__player} onClick={handleClick}>
-                {isPlaying && track?.preview_url ? <Play /> : <Pause />}
+                {isPlaying  ? <Play /> : <Pause />}
               </button>
               ) : (
                 <button className={styles.button__player__DISABLE}>
@@ -121,19 +135,24 @@ export default function Footer() {
                 </button>
               )
             }
-          {
-            track?.preview_url &&
-            <audio ref={audioRef} src={track?.preview_url} autoPlay={isPlaying} />
-          }
+          <audio ref={audioRef} onEnded={() => setIsPlaying(false)}/>
       </div>
       <div className={styles.footer__volume}>
+        <div className={styles.control__volume}>
+        <button>
+          {
+            volume === 0 ? <VolumeMuteIcon /> : 
+            volume < 0.3 ? <VolumeLowIcon /> :
+            volume < 0.7 ? <VolumeMediumIcon /> : <VolumeHighIcon /> 
+          }
+        </button>
           <Slider defaultValue={[100]} max={100} min={0} style={{ width: "98px" }} onValueChange={(value) => {
-            if ($getTrackId && track?.preview_url) {
               const [newVolume] = value;
-              audioRef.current.volume = newVolume / 100;
-              }
-            }}
+              const volumeValue = newVolume / 100;
+              setVolume(volumeValue);
+          }}
           />
+          </div>
       </div>
     </div>
   );

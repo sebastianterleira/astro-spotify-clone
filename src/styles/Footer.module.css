@@ -83,8 +83,27 @@
   width: 2rem;
   height: 2rem;
   border-radius: 2rem;
-  background-color: hsla(0,0%,100%,.3);
-  cursor: not-allowed;
+  background-color: hsla(0, 0%, 100%, 0.3);
+}
+
+.button__player__DISABLE:hover,
+.button__player__DISABLE:focus,
+.button__player:hover,
+.button__player:focus {
+  -webkit-transform: scale(1.06);
+  transform: scale(1.06);
+  -webkit-transition: none 33ms cubic-bezier(0.3, 0, 0, 1);
+  transition: none 33ms cubic-bezier(0.3, 0, 0, 1);
+  -webkit-transition-property: all;
+  transition-property: all;
+}
+
+.button__player__DISABLE:active,
+.button__player:active {
+  -webkit-transform: scale(0.99);
+  transform: scale(0.99);
+  -webkit-transition: none;
+  transition: none;
 }
 
 .footer__volume {
@@ -93,4 +112,10 @@
   justify-content: flex-end;
   padding-left: 0.5rem;
   width: 24rem;
+}
+
+.control__volume {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }
