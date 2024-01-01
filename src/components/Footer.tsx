@@ -55,10 +55,23 @@ export default function Footer() {
   const [track, setTrack] = useState<SpotifyTrackAPIResponse | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
-  const audioRef = useRef<HTMLAudioElement | undefined>()
+  const audioRef = useRef<HTMLAudioElement | undefined>();
+  const [isMuted, setIsMuted] = useState(false);
+  const previousVolumeRef = useRef(volume)
 
   const handleClick = () => {
     setIsPlaying(!isPlaying);
+  }
+
+  const handleMute = () => {
+    const isVolumeSilenced = volume < 0.1
+
+    if (isVolumeSilenced) {
+      setVolume(previousVolumeRef.current)
+    } else {
+      previousVolumeRef.current = volume
+      setVolume(0)
+    }
   }
 
   const $getTrackId = useStore(getTrackId);
@@ -139,14 +152,14 @@ export default function Footer() {
       </div>
       <div className={styles.footer__volume}>
         <div className={styles.control__volume}>
-        <button>
+        <button onClick={handleMute}>
           {
             volume === 0 ? <VolumeMuteIcon /> : 
             volume < 0.3 ? <VolumeLowIcon /> :
             volume < 0.7 ? <VolumeMediumIcon /> : <VolumeHighIcon /> 
           }
         </button>
-          <Slider defaultValue={[100]} max={100} min={0} style={{ width: "98px" }} onValueChange={(value) => {
+          <Slider defaultValue={[100]} max={100} min={0} value={[volume * 100]} style={{ width: "98px" }} onValueChange={(value) => {
               const [newVolume] = value;
               const volumeValue = newVolume / 100;
               setVolume(volumeValue);
