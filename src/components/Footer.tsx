@@ -184,11 +184,11 @@ export default function Footer() {
       <div className={styles.footer__player}>
           {
             $getTrackId && track?.preview_url ? (
-              <button className={styles.button__player} onClick={handleClick}>
+              <button className={styles.button__player} onClick={handleClick} aria-label="Button play">
                 {isPlaying  ? <Play /> : <Pause />}
               </button>
               ) : (
-                <button className={styles.button__player__DISABLE}>
+                <button className={styles.button__player__DISABLE} aria-label="Button play">
                   <Play />
                 </button>
               )
@@ -198,7 +198,7 @@ export default function Footer() {
       </div>
       <div className={styles.footer__volume}>
         <div className={styles.control__volume}>
-        <button onClick={handleMute}>
+        <button className={styles.button__volume} onClick={handleMute} aria-label="Button mute">
           {
             volume === 0 ? <VolumeMuteIcon /> : 
             volume < 0.3 ? <VolumeLowIcon /> :

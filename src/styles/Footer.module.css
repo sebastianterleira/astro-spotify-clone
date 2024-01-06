@@ -64,7 +64,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: .4rem;
+  gap: 0.4rem;
   padding-left: 0.5rem;
   width: 35rem;
 }
@@ -136,13 +136,13 @@
 .control__volume {
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .song__control {
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .current__time {
@@ -162,4 +162,8 @@
   color: #a7a7a7;
   user-select: none;
   -webkit-user-select: none;
+}
+
+.button__volume {
+  color: hsla(0,0%,100%,.7);
 }
