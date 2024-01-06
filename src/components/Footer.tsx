@@ -3,9 +3,9 @@ import { getTrack } from "@services/service.getTrack";
 import type { SpotifyTrackAPIResponse } from "src/types/item-track.type";
 import { useStore } from '@nanostores/react';
 import { getTrackId } from '../lib/getTrackId';
+import { Slider } from "./Slider";
 import styles from "../styles/Footer.module.css";
 import Cookies from "js-cookie";
-import { Slider } from "./Slider";
 
 const Pause = () => (
   <svg
@@ -50,6 +50,51 @@ const CoverPlaylistDefault = () => (
     d="M6 3h15v15.167a3.5 3.5 0 1 1-3.5-3.5H19V5H8v13.167a3.5 3.5 0 1 1-3.5-3.5H6V3zm0 13.667H4.5a1.5 1.5 0 1 0 1.5 1.5v-1.5zm13 0h-1.5a1.5 1.5 0 1 0 1.5 1.5v-1.5z"
   ></path></svg>
 )
+
+const SongControl = ({ audio }) => {
+  const [currentTime, setCurrentTime] = useState(0);
+
+  useEffect(() => {
+    audio.current.addEventListener("timeupdate", handleTimeUpdate)
+    return () => {
+      audio.current.removeEventListener("timeupdate", handleTimeUpdate)
+    }
+  }, [])
+  
+  const handleTimeUpdate = () => {
+    setCurrentTime(audio.current.currentTime);
+  }
+
+  const formatTime = (time) => {
+    if (time == null) return "00:00"
+
+    const seconds = Math.floor(time % 60)
+    const minutes = Math.floor(time / 60)
+
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`
+  }
+
+  const duration = audio.current?.duration ?? 0;
+
+  return (
+    <div className={styles.song__control}>
+      <span className={styles.current__time}>{formatTime(currentTime)}</span>
+
+        <Slider 
+        defaultValue={[0]}
+        value={[currentTime]}
+        max={audio?.current?.duration ?? 0} 
+        min={0} 
+        style={{ width: "27.75rem", backgroundColor: "hsla(0,0%,100%,.3)" }}
+        onValueChange={(value) => {
+          const [newCurrentTime] = value
+          audio.current.currentTime = newCurrentTime;
+        }}/>
+
+      {<span className={styles.duration}>{duration ? formatTime(duration) : "0:00"}</span>}
+    </div>
+  )
+}
 
 export default function Footer() {
   const [track, setTrack] = useState<SpotifyTrackAPIResponse | null>(null);
@@ -103,6 +148,7 @@ export default function Footer() {
       setIsPlaying(true);
     } else {
       setIsPlaying(false);
+      audioRef.current.currentTime = 0;
     }
   }, [track?.preview_url]);
 
@@ -147,6 +193,7 @@ export default function Footer() {
                 </button>
               )
             }
+            <SongControl audio={audioRef}/>
           <audio ref={audioRef} onEnded={() => setIsPlaying(false)}/>
       </div>
       <div className={styles.footer__volume}>

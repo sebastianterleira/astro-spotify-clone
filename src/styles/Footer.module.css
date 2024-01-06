@@ -63,8 +63,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: .4rem;
   padding-left: 0.5rem;
-  width: 34rem;
+  width: 35rem;
 }
 
 .button__player {
@@ -128,11 +130,36 @@
   align-items: center;
   justify-content: flex-end;
   padding-left: 0.5rem;
-  width: 24rem;
+  width: 23rem;
 }
 
 .control__volume {
   display: flex;
   align-items: center;
   gap: .5rem;
+}
+
+.song__control {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.current__time {
+  width: 3.125rem;
+  text-align: right;
+  font-size: 0.7475rem;
+  font-weight: 400;
+  color: #a7a7a7;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.duration {
+  width: 3.125rem;
+  font-size: 0.7475rem;
+  font-weight: 400;
+  color: #a7a7a7;
+  user-select: none;
+  -webkit-user-select: none;
 }
