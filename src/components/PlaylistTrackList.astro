@@ -40,7 +40,7 @@ const listTracks = await getTracksByPlaylist(token, user_id);
     <div class="mask__bg"></div>
     <div class="mask__shadow"></div>
     {
-      playlist.images !== null ? (
+      playlist?.images !== null ? (
         <picture class="cover__playlist">
           <Image
             src={playlist?.images[0]?.url}
@@ -48,13 +48,13 @@ const listTracks = await getTracksByPlaylist(token, user_id);
             height="232"
             class="playlist__img"
             alt="Imagen de portada del playlist que escogiste"
-            transition:name={`playlist ${transition ? playlist.id : playlist.id + "_a"} image` }
+            transition:name={`playlist ${transition ? playlist?.id : playlist?.id + "_a"} image` }
           />
         </picture>
       ) : (
         <picture
           class="cover__playlist default__coverPlaylist"
-          transition:name={`playlist ${transition ? playlist.id : playlist.id + "_a"} default`}
+          transition:name={`playlist ${transition ? playlist?.id : playlist?.id + "_a"} default`}
         >
           <CoverPlaylistDefaultLarge />
         </picture>
@@ -72,14 +72,14 @@ const listTracks = await getTracksByPlaylist(token, user_id);
                 ? "playlist__name--lg"
                 : "playlist__name--sm"}
         >
-          {playlist.name}
+          {playlist?.name}
         </h1>
         <div class="playlist__info">
           {
-            playlist.owner.display_name === user.display_name && (
+            playlist?.owner?.display_name === user?.display_name && (
               <picture>
                 <Image
-                  src={user.images[0]?.url}
+                  src={user?.images[0]?.url}
                   width="24"
                   height="24"
                   class="user__avatar"
@@ -88,13 +88,13 @@ const listTracks = await getTracksByPlaylist(token, user_id);
               </picture>
             )
           }
-          <p class="playlist__display_name">{playlist.owner.display_name}</p>
+          <p class="playlist__display_name">{playlist?.owner?.display_name}</p>
           <span class="space__char">•</span>
           <p class="playlist__count_tracks">
             {`${listTracks?.items?.length} canciones`}
           </p>
           <p class="playlist__followers">
-            {`, ${playlist.followers.total} me gusta`}
+            {`, ${playlist?.followers?.total} me gusta`}
           </p>
         </div>
       </header>
