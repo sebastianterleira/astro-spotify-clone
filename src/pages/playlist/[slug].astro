@@ -1,10 +1,14 @@
 ---
 import PlaylistTrackList from "@components/PlaylistTrackList.astro";
 import HomeLayout from "../../layouts/HomeLayout.astro";
+import Layout from "src/layouts/Layout.astro";
+import Login from "@components/Login";
 
 const { slug } = Astro.params;
 
-const obj = {}
+const cookie = Astro.cookies.get("token");
+
+const obj = {};
 
 if (slug.split("_a").length === 2) {
   obj.playlist_id = slug.split("_a")[0];
@@ -16,7 +20,15 @@ if (slug.split("_a").length === 2) {
 ---
 
 <Fragment>
-  <HomeLayout>
-    <PlaylistTrackList user_id={obj.playlist_id} transition={obj.bool} />
-  </HomeLayout>
+  {
+    cookie ? (
+      <HomeLayout>
+        <PlaylistTrackList user_id={obj.playlist_id} transition={obj.bool} />
+      </HomeLayout>
+    ) : (
+      <Layout title="Spotify clone">
+        <Login client:load />
+      </Layout>
+    )
+  }
 </Fragment>
