@@ -37,6 +37,7 @@ export default function HeaderReact({ user, bg, active }) {
             href="https://github.com/sebastianterleira/astro-spotify-clone"
             className={styles["link__item--premium"]}
             aria-label="Star on Github"
+            target="_blank" rel="noreferrer"
           >
             Star on Github
           </a>
