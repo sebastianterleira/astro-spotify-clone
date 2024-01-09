@@ -26,7 +26,7 @@ if (slug.split("_a").length === 2) {
         <PlaylistTrackList user_id={obj.playlist_id} transition={obj.bool} />
       </HomeLayout>
     ) : (
-      <Layout title="Authenticate | Astro Spotify clone">
+      <Layout title="Home | Astro Spotify clone">
         <Login client:load />
       </Layout>
     )
