@@ -12,65 +12,87 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <ViewTransitions fallback="none"/>
     <meta charset="UTF-8" />
-    <title>{title}</title>
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="URL" />
+    <link rel="canonical" href="https://astro-spotify-clone.vercel.app/" />
+    <meta name="theme-color" content="#fff" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content="Astro Spotify Clone + View Transitions + Api Spotify Demo" />
+    <meta name="author" content="Sebastian Terleira" />
+
+    <!-- Facebook Meta Tags  -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Astro Spotify Clone + View Transitions + Api Spotify Demo"/>
+    <meta property="og:image" content="/Vortigaunt.png" />
+    <meta property="og:url" content="https://astro-spotify-clone.vercel.app/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Meta Tags  -->
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content="Astro Spotify Clone + View Transitions + Api Spotify Demo"/>
+    <meta name="twitter:image" content="/Vortigaunt.png"/>
+    <meta property="twitter:domain" content="astro-spotify-clone.vercel.app" />
+    <meta property="twitter:url" content="https://astro-spotify-clone.vercel.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <ViewTransitions fallback="none" />
   </head>
   <body>
     <slot />
+    <style is:global>
+      html {
+        font-family: "CircularStd", system-ui, sans-serif;
+        background: #000;
+        color: white;
+        --fallback-fonts: Helvetica Neue, helvetica, arial,
+          Hiragino Kaku Gothic ProN, Meiryo, MS Gothic;
+      }
+
+      @font-face {
+        font-family: "CircularStd";
+        src: url("/fonts/CircularStd-Medium.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "CircularStd";
+        src: url("/fonts/CircularStd-Book.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "CircularStd";
+        src: url("/fonts/CircularStd-Light.woff2") format("woff2");
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "CircularStd";
+        src: url("/fonts/CircularStd-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "CircularStd";
+        src: url("/fonts/CircularStd-Black.woff2") format("woff2");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
   </body>
-  <style is:global>
-    html {
-      font-family: "CircularStd", system-ui, sans-serif;
-      background: #000;
-      color: white;
-    --fallback-fonts: Helvetica Neue,helvetica,arial,Hiragino Kaku Gothic ProN,Meiryo,MS Gothic;
-    }
-
-    @font-face {
-      font-family: "CircularStd";
-      src: url("/fonts/CircularStd-Medium.woff2") format("woff2");
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "CircularStd";
-      src: url("/fonts/CircularStd-Book.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "CircularStd";
-      src: url("/fonts/CircularStd-Light.woff2") format("woff2");
-      font-weight: 300;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "CircularStd";
-      src: url("/fonts/CircularStd-Bold.woff2") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "CircularStd";
-      src: url("/fonts/CircularStd-Black.woff2") format("woff2");
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
-    }
-  </style>
 </html>
