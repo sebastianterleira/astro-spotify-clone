@@ -10,11 +10,11 @@ const cookie = Astro.cookies.get("token");
 <Fragment>
   {
     cookie ? (
-      <HomeLayout>
+      <HomeLayout title="Home | Astro Spotify clone">
         <Home />
       </HomeLayout>
     ) : (
-      <Layout title="Spotify clone">
+      <Layout title="Authenticate | Astro Spotify clone">
         <Login client:load/>
       </Layout>
     )

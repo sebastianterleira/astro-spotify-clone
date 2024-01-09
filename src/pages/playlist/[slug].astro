@@ -22,11 +22,11 @@ if (slug.split("_a").length === 2) {
 <Fragment>
   {
     cookie ? (
-      <HomeLayout>
+      <HomeLayout title="Playlist | Astro Spotify clone">
         <PlaylistTrackList user_id={obj.playlist_id} transition={obj.bool} />
       </HomeLayout>
     ) : (
-      <Layout title="Spotify clone">
+      <Layout title="Authenticate | Astro Spotify clone">
         <Login client:load />
       </Layout>
     )
