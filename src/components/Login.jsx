@@ -15,7 +15,7 @@ export default function Login() {
 
   const handleClick = () => {
     const clientId = "6f06dbd1290045b3ad44025afd927435";
-    const redirectUrl = "https://astro-spotify-clone.vercel.app/";
+    const redirectUrl = "https://astro-spotify-clone-galanga.vercel.app/";
     const apiUrl = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-email",
