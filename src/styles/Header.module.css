@@ -120,3 +120,96 @@
   align-items: center;
   justify-content: center;
 }
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown .menu {
+  display: none;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+  -webkit-box-shadow: 0 16px 24px rgba(0,0,0,.3), 0 6px 8px rgba(0,0,0,.2);
+    box-shadow: 0 16px 24px rgba(0,0,0,.3), 0 6px 8px rgba(0,0,0,.2);
+  position: absolute;
+  min-height: 2.375rem;
+  right: 0;
+  top: 40px;
+  padding: .25rem;
+}
+
+.dropdown .menuActive {
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #282828;
+  -webkit-box-shadow: 0 16px 24px rgba(0,0,0,.3), 0 6px 8px rgba(0,0,0,.2);
+    box-shadow: 0 16px 24px rgba(0,0,0,.3), 0 6px 8px rgba(0,0,0,.2);
+  position: absolute;
+  min-height: 2.375rem;
+  width: 7.25rem;
+  right: 0;
+  top: 2.5rem;
+  padding: .25rem;
+}
+
+.dropdown .menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.dropdown .menu ul button {
+  border: none;
+  display: block;
+  padding: .75rem;
+  text-align: left;
+  width: 100%;
+
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  color: hsla(0,0%,100%,.9);
+  cursor: default;
+  text-decoration: none;
+}
+
+.dropdown .menuActive ul button {
+  border: none;
+  display: block;
+  padding: .625rem;
+  text-align: left;
+  width: 100%;
+
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  color: hsla(0,0%,100%,.9);
+  cursor: default;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dropdown .menuActive ul button:hover {
+  background-color: hsla(0,0%,100%,.1);
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown .menuActive ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.menu__item--logout {
+  font-size: 0.875rem;
+  font-weight: 400;
+}

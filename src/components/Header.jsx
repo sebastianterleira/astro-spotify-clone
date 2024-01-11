@@ -1,7 +1,9 @@
 import styles from "../styles/Header.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function HeaderReact({ user, bg, active }) {
+  const [activeMenu, setActiveMenu] = useState(false);
+
   useEffect(() => {
     const playlistsDiv = document.getElementById("home");
     const bibliotecaSection = document.getElementById("header");
@@ -19,7 +21,12 @@ export default function HeaderReact({ user, bg, active }) {
     <header className={styles.header} id="header">
       <nav className={styles.nav}>
         <div className={styles.nav__buttons}>
-          <a href="/" className={active ? styles.buttons__active : styles.buttons__item} aria-label="Volver" data-astro-prefetch="viewport">
+          <a
+            href="/"
+            className={active ? styles.buttons__active : styles.buttons__item}
+            aria-label="Volver"
+            data-astro-prefetch="viewport"
+          >
             <svg
               role="img"
               height="16"
@@ -37,7 +44,8 @@ export default function HeaderReact({ user, bg, active }) {
             href="https://github.com/sebastianterleira/astro-spotify-clone"
             className={styles["link__item--premium"]}
             aria-label="Star on Github"
-            target="_blank" rel="noreferrer"
+            target="_blank"
+            rel="noreferrer"
           >
             Star on Github
           </a>
@@ -60,15 +68,29 @@ export default function HeaderReact({ user, bg, active }) {
 
             <spam>Instalar app</spam>
           </a>
-          <picture className={styles.content__user}>
-            <img
-              src={user.images[0]?.url}
-              height="24"
-              width="24"
-              className={styles.user__img}
-              alt={`Avatar del usuario ${user.display_name}`}
-            />
-          </picture>
+          <div
+            className={styles.dropdown}
+            onClick={() => setActiveMenu(!activeMenu)}
+          >
+            <picture className={styles.content__user}>
+              <img
+                src={user.images[0]?.url}
+                height="24"
+                width="24"
+                className={styles.user__img}
+                alt={`Avatar del usuario ${user.display_name}`}
+              />
+            </picture>
+            <div className={activeMenu ? styles.menuActive : styles.menu}>
+              <ul>
+                <li>
+                  <button onClick={() => window.location.reload()}>
+                    <spam className={styles["menu__item--logout"]}>Logout</spam>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </nav>
     </header>
