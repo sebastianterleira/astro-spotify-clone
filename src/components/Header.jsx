@@ -1,8 +1,19 @@
 import styles from "../styles/Header.module.css";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export default function HeaderReact({ user, bg, active }) {
   const [activeMenu, setActiveMenu] = useState(false);
+
+  const handleClick = () => {
+    if(window.location.pathname !== "/") {
+      window.location.href = "/";
+    } else {
+      window.location.href = "/";
+    }
+    window.location.reload();
+    Cookies.remove("token");
+  };
 
   useEffect(() => {
     const playlistsDiv = document.getElementById("home");
@@ -84,7 +95,7 @@ export default function HeaderReact({ user, bg, active }) {
             <div className={activeMenu ? styles.menuActive : styles.menu}>
               <ul>
                 <li>
-                  <button onClick={() => window.location.reload()}>
+                  <button onClick={() => handleClick()}>
                     <spam className={styles["menu__item--logout"]}>Logout</spam>
                   </button>
                 </li>

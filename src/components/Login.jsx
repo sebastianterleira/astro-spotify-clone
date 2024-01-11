@@ -8,7 +8,7 @@ export default function Login() {
     const tokenHash = window.location.hash;
 
     if (tokenHash !== "") {
-      window.location.reload();
+      window.location.href = "/";
       Cookies.set("token", tokenHash, {expires: inOneHour});
     }
   }, []);
