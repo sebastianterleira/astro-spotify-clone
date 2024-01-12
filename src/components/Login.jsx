@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import styles from "../styles/Login.module.css";
 import Cookies from "js-cookie";
+import { apiUrl, clientId, redirectUrl } from "src/config";
 
 export default function Login() {
   useEffect(() => {
@@ -14,9 +15,6 @@ export default function Login() {
   }, []);
 
   const handleClick = () => {
-    const clientId = "6f06dbd1290045b3ad44025afd927435";
-    const redirectUrl = "http://localhost:4321/";
-    const apiUrl = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-email",
       "user-read-private",
