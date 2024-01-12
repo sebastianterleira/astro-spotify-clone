@@ -1,6 +1,6 @@
-<div align="center">
- <img src="https://i.postimg.cc/3JtbghLt/started-kit.png)">
-</div>
+# Spotify Clone with Astro - A Blog Website 🎮
+
+![hero page](https://i.postimg.cc/y85VRk3T/986shots-so.png)
 
 <!-- GETTING STARTED -->
 ## Getting Started
