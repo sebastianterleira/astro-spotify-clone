@@ -20,7 +20,7 @@ Here are the steps to execute the project:
 1. Clone the repo
 
    ```sh
-   git clone git@github.com:sebastianterleira/side-project-starter-kit.git
+   git clone git@github.com:sebastianterleira/astro-spotify-clone.git
    ```
    
 3. Install NPM packages
@@ -32,7 +32,7 @@ Here are the steps to execute the project:
 5. To make a build of all apps and packages
 
    ```sh
-   pnpm build
+   npm build
    ```
    
 6. Run the app
