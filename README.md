@@ -3,16 +3,10 @@
 <!-- ![hero page](https://i.postimg.cc/y85VRk3T/986shots-so.png) -->
 ![hero page](https://i.postimg.cc/wvhzm2DX/682shots-so.png)
 
+This is a Spotify clone built with Astro, using the Spotify Web API for authentication and retrieving playlists related to the logged-in user. The View Transitions also don't lag behind, featuring fading transitions between pages, state persistence, and more.
+
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This repository was created with the intention that it can serve as a base project, oriented to the creation of Side Projects that need to be built in an orderly, scalable and above all that allows to add features quickly.
-
-Simply cloning the project, and configuring the environment variables, you should be able to start without any problem.
-
------
-
-## Installation 
 
 ### Manual Installation
 
@@ -41,5 +35,29 @@ Here are the steps to execute the project:
    ```sh
    npm run dev
    ```
+
+## Environments
+
+You need create a `.env` file to be able work with environment variable, you can see this file the example [(.env.example)](./.env.example)
+
+## Authentication account for the app
+
+
+Email:
+
+   ```sh
+   clonespotify30@gmail.com
+   ```
+
+Password: 
+   ```sh
+   123456!@ST
+   ```
+
+## Learning Resources
+
+- [Astro JS crash course](https://www.youtube.com/watch?v=e-hTm5VmofI)
+- [Astro JS in 100 seconds](https://www.youtube.com/watch?v=dsTXcSeAZq8)
+- [Astro JS docs](https://astro.build/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
