@@ -42,6 +42,7 @@ You need create a `.env` file to be able work with environment variable, you can
 
 ## Authentication account for the app
 
+I do this because Spotify has my application in 'developer mode,' and I have to enable the account for each user who wants to log in, with a limit of only 25 users. That's why I provide a sample Spotify account for them to use the app. However, if they want to log in with their own credentials, they should run the project locally, setting up a Spotify application to configure the environment variables.
 
 Email:
 
