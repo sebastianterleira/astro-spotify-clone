@@ -85,7 +85,7 @@ export default function HeaderReact({ user, bg, active }) {
           >
             <picture className={styles.content__user}>
               <img
-                src={user.images[0]?.url}
+                src={user.images[0]?.url || "https://i.postimg.cc/RZWxgNbX/images-2.png"}
                 height="24"
                 width="24"
                 className={styles.user__img}

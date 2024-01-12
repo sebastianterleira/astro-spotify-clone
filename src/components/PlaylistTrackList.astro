@@ -79,7 +79,7 @@ const listTracks = await getTracksByPlaylist(token, user_id);
             playlist?.owner?.display_name === user?.display_name && (
               <picture>
                 <Image
-                  src={user?.images[0]?.url}
+                  src={user?.images[0]?.url || "https://i.postimg.cc/RZWxgNbX/images-2.png"}
                   width="24"
                   height="24"
                   class="user__avatar"

@@ -8,13 +8,13 @@ const { slug } = Astro.params;
 
 const cookie = Astro.cookies.get("token");
 
-const obj = {};
+const obj = {
+  playlist_id: slug.split("_a")[0]
+};
 
 if (slug.split("_a").length === 2) {
-  obj.playlist_id = slug.split("_a")[0];
-  obj.bool = false;
+  obj.bool = false; 
 } else {
-  obj.playlist_id = slug.split("_a")[0];
   obj.bool = true;
 }
 ---
