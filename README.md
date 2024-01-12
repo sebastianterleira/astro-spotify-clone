@@ -1,6 +1,7 @@
-<div align="center">
- <img src="https://i.postimg.cc/3JtbghLt/started-kit.png)">
-</div>
+# Spotify Clone with Astro v4.1 - 🎵🎶
+
+<!-- ![hero page](https://i.postimg.cc/y85VRk3T/986shots-so.png) -->
+![hero page](https://i.postimg.cc/wvhzm2DX/682shots-so.png)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -20,7 +21,7 @@ Here are the steps to execute the project:
 1. Clone the repo
 
    ```sh
-   git clone git@github.com:sebastianterleira/side-project-starter-kit.git
+   git clone git@github.com:sebastianterleira/astro-spotify-clone.git
    ```
    
 3. Install NPM packages
@@ -32,7 +33,7 @@ Here are the steps to execute the project:
 5. To make a build of all apps and packages
 
    ```sh
-   pnpm build
+   npm build
    ```
    
 6. Run the app
