@@ -60,5 +60,7 @@ Password:
 - [Astro JS crash course](https://www.youtube.com/watch?v=e-hTm5VmofI)
 - [Astro JS in 100 seconds](https://www.youtube.com/watch?v=dsTXcSeAZq8)
 - [Astro JS docs](https://astro.build/)
+- [Aprende Astro 3 desde cero](https://www.youtube.com/watch?v=RB5tR_nqUEw)
+- [Portafolio con Astro v4](https://www.youtube.com/watch?v=HEMvsJTBweY)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
