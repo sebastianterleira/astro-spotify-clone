@@ -18,19 +18,13 @@ Here are the steps to execute the project:
    git clone git@github.com:sebastianterleira/astro-spotify-clone.git
    ```
    
-3. Install NPM packages
+2. Install NPM packages
 
    ```sh
    npm install
    ```
    
-5. To make a build of all apps and packages
-
-   ```sh
-   npm build
-   ```
-   
-6. Run the app
+3. Run the app
 
    ```sh
    npm run dev
