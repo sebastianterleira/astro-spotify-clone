@@ -1,4 +1,4 @@
-# Spotify Clone with Astro v4.1 - 🎵🎶
+# Spotify Clone with Astro v4 - 🎵🎶
 
 <!-- ![hero page](https://i.postimg.cc/y85VRk3T/986shots-so.png) -->
 ![hero page](https://i.postimg.cc/wvhzm2DX/682shots-so.png)
