@@ -33,6 +33,13 @@ export default function Login() {
 
   return (
     <main className={styles.main}>
+      <div className={styles.content__account}>
+        <p className={styles.title}>Inicia sesión con esta cuenta:</p>
+        <div className={styles.account}>
+          <p>clonespotify30@gmail.com</p>
+          <p>123456!@ST</p>
+        </div>
+      </div>
       <img
         src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png"
         alt="Logo de Spotify"
