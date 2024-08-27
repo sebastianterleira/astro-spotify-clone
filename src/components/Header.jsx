@@ -62,6 +62,8 @@ export default function HeaderReact({ user, bg, active }) {
           </a>
           <a
             href="https://open.spotify.com/download"
+            target="_blank"
+            rel="noreferrer"
             className={styles["link__item--download"]}
             aria-label="Instalar app"
           >
