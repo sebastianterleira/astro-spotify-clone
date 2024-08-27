@@ -17,8 +17,8 @@ const user = await getCurrentUser(token);
 ---
 
 <Fragment>
-  <Header user={user} bg={"bg__header--home"} active={false} client:load/>
   <div class="wrapper">
+    <Header user={user} bg={"bg__header--home"} active={false} client:load/>
     <div class="mask__bg"></div>
     <article class="home__pov">
       <GreetingTitle client:visible />
@@ -45,7 +45,6 @@ const user = await getCurrentUser(token);
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 4rem 1.375rem 0.25rem 1.375rem;
     position: relative;
   }
 
@@ -69,6 +68,7 @@ const user = await getCurrentUser(token);
     gap: 1.125rem;
     margin-bottom: 1rem;
     position: relative;
+    padding: 0 1.375rem;
   }
 
   .container__playlist {
@@ -106,6 +106,7 @@ const user = await getCurrentUser(token);
     gap: 1.125rem;
     margin-bottom: 2.5rem;
     position: relative;
+    padding: 0 1.375rem;
   }
 
   .card__container {
