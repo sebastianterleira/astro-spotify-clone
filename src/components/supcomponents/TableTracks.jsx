@@ -6,7 +6,7 @@ export default function TableTracks() {
     const playlistsDiv = document.getElementById("home");
     const bibliotecaSection = document.getElementById("table__tracks");
     function handleScroll() {
-      if (playlistsDiv.scrollTop >= 300) {
+      if (playlistsDiv.scrollTop >= 330) {
         bibliotecaSection.classList.add(style.header__pos);
       } else {
         bibliotecaSection.classList.remove(style.header__pos);

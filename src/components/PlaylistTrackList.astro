@@ -36,9 +36,9 @@ const listTracks = await getTracksByPlaylist(token, user_id);
     active={true}
     client:visible
   />
+  <div class="mask__bg"></div>
+  <div class="mask__shadow"></div>
   <div class="wrapper">
-    <div class="mask__bg"></div>
-    <div class="mask__shadow"></div>
     {
       playlist?.images !== null ? (
         <picture class="cover__playlist">
@@ -117,17 +117,18 @@ const listTracks = await getTracksByPlaylist(token, user_id);
 
   .wrapper {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     width: 100%;
-    padding: 0px 1.5rem 1.4375rem 1.5rem;
+    padding: 0px 1.5rem 0 1.5rem;
     max-height: 25rem;
-    min-height: 21.25rem;
+    min-height: 19.25rem;
     position: relative;
   }
 
   .conteiner__playlist {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   .mask__bg {
@@ -152,10 +153,10 @@ const listTracks = await getTracksByPlaylist(token, user_id);
       var(--background-noise);
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.6) 0,
-        var(--background-base) 100%
+        var(--background-base) 40%
       ),
       var(--background-noise);
-    height: 232px;
+    height: 100%;
     position: absolute;
     width: 100%;
     z-index: 0;
