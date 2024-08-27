@@ -15,10 +15,10 @@ interface Props {
   {
     items.map((playlist) => (
       <a href={`playlist/${playlist.id + "_a"}`} class="container__playlist" data-astro-prefetch="viewport">
-        {playlist.images[0]?.url !== undefined ? (
+        {playlist.images !== null ? (
           <picture class="content__img">
             <Image
-              src={playlist.images[0]?.url}
+              src={playlist?.images[0]?.url}
               height="169"
               width="169"
               class="img__playlist"
