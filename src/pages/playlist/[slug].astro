@@ -9,7 +9,8 @@ const { slug } = Astro.params;
 const cookie = Astro.cookies.get("token");
 
 const obj = {
-  playlist_id: slug.split("_a")[0]
+  playlist_id: slug.split("_a")[0],
+  bool: null
 };
 
 if (slug.split("_a").length === 2) {
