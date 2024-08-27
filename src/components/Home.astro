@@ -20,7 +20,9 @@ const user = await getCurrentUser(token);
   <div class="wrapper">
     <Header user={user} bg={"bg__header--home"} active={false} client:load/>
     <div class="mask__bg"></div>
-    <article class="home__pov">
+    {
+      items && items.length > 0 ? (
+      <article class="home__pov">
       <GreetingTitle client:visible />
       <div class="card__container">
         <RecomendedPlaylists items={items}/>
@@ -32,6 +34,12 @@ const user = await getCurrentUser(token);
         <PlaylistsHome items={items}/>
       </div>
     </article>
+      ) : (
+        <div class="no__playlists__container">
+          <p class="no__playlists">No hay playlists para mostrar 😢, agrega algun playlist desde tu cuenta de <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="no__playlists--link">spotify</a> para poder usar esta app</p>
+        </div>
+      )
+    }
   </div>
 </Fragment>
 
@@ -115,5 +123,29 @@ const user = await getCurrentUser(token);
     grid-template-rows: 3rem;
     grid-auto-rows: 3rem;
     grid-gap: 0.5rem;
+  }
+
+  .no__playlists__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    color: #fff;
+    z-index: 2;
+    padding: 2rem;
+  }
+
+  .no__playlists {
+    font-size: 3.5em;
+    font-weight: 800;
+    user-select: none;
+    -webkit-user-select: none;
+    text-transform: uppercase;
+  }
+
+  .no__playlists--link {
+    color: #1db954;
   }
 </style>
